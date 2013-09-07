@@ -9,6 +9,14 @@ app.config.from_object('config.flask_config')
 mongo = PyMongo(app)
 
 
+@app.route('/login', methods=['POST'])
+def login():
+
+
+
+    
+
+
 @app.route('/', methods=['GET'])
 def home():
     return make_response(open('src/static/base.html').read())
