@@ -59,25 +59,12 @@ form.form {
 	padding: 20px;
 	border-radius: 5px;
 
-	.form-group {
-		height: 34px;
-		width: 100%;
-		label, input {
-			display: inline-block;
-		}
-		label {
-			text-align: right;
-			vertical-align: baseline;
-		}
-		input {
-		}
-		.col-xs-7 {
-			padding-left: 0;
-			padding-right: 0;
-		}
+	.row {
+		margin-bottom: 10px;
 	}
 
-	button.submit {
+	.submit {
+		margin-top: 10px;
 		background-color: $darkBlue;
 		color:white;
 	}
