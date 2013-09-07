@@ -1,0 +1,22 @@
+<form ng-submit="update()">
+    <input type="radio" ng-model="forwarders.current" value="sms">SMS
+    <br>
+    <input type="radio" ng-model="forwarders.current" value="dropbox">Dropbox
+    <br>
+    <input type="radio" ng-model="forwarders.current" value="email">E-mail
+
+    <div ng-show="showForwarderOptions('sms')">
+        SMS Configuration <br>
+        Phone Number: <input type="text" ng-model="forwarders.forwarders.sms.number"/>
+    </div>
+
+    <div ng-show="showForwarderOptions('dropbox')">
+        Dropbox Configuration
+    </div>
+
+    <div ng-show="showForwarderOptions('email')">
+        Email Configuration
+    </div>
+
+    <input ng-show="forwarders.current" type="submit"/>
+</form>

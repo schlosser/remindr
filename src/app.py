@@ -12,6 +12,7 @@ from config import errors       as ERR
 # controllers
 from controllers import user as user_controller
 from controllers import reminder as reminder_controller
+from controllers import forwarders as forwarders_controller
 
 app = Flask(__name__)
 app.config.from_object('config.flask_config')
@@ -70,6 +71,20 @@ def complete_reminder(rid):
 def list_reminders():
     return reminder_controller.list(mongo)
 
+
+##############################################################################
+#   Forwarding Reminders
+##############################################################################
+
+@login_required
+@app.route('/forwarders/update', methods=['POST'])
+def update_forwarders():
+    return forwarders_controller.update(mongo, data=simplejson.loads(request.data))
+
+@login_required
+@app.route('/forwarders', methods=['GET'])
+def get_forwarders():
+    return forwarders_controller.find_by_current_user(mongo)
 
 ##############################################################################
 #   authentication
