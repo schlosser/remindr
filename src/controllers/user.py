@@ -3,6 +3,7 @@ from flask import session
 from flask.ext.pymongo import ObjectId
 from functools import wraps
 from passlib.hash import sha256_crypt as cryptor
+import simplejson
 
 from sys import path
 path.append('../')
@@ -27,6 +28,24 @@ def needs_data(f):
 ##############################################################################
 #   controller methods
 ##############################################################################
+
+@needs_data
+def get_user(mongo, uid=None, data=None):
+    try:
+        user = mongo.db[MONGO.USERS].find_one({'_id': ObjectId(uid)})
+    except:
+        return ERR.USER_NOT_FOUND
+
+    if not user:
+        return ERR.USER_NOT_FOUND
+
+    response = {}
+    # build response
+    for key in data['return']:
+        response[key] = user[key]
+
+    return simplejson.dumps(response), 200
+
 
 @needs_data
 def login(mongo, data=None):

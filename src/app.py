@@ -43,7 +43,16 @@ def logout_required(f):
 
 
 ##############################################################################
-#   authentication
+#   user
+##############################################################################
+
+@app.route('/user/<identifier>', methods=['GET'])
+def get_user(identifier):
+    return user_controller.get_user(mongo, uid=identifier, data={'return': ['username']})
+
+
+##############################################################################
+#   reminder
 ##############################################################################
 
 @app.route('/reminder/create', methods=['POST'])
