@@ -24,6 +24,12 @@ BAD_LOGIN = (
     }), 401
 )
 
+ALREADY_SIGNED_IN = (
+    simplejson.dumps({
+    "message" : "You're already signed in"
+    }), 400
+)
+
 ######################################
 #   General responses
 ######################################

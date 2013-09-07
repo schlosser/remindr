@@ -32,5 +32,3 @@ def logout():
     session.clear()
     return RESP.LOGGED_OUT
 
-
-
