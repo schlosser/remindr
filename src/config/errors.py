@@ -15,7 +15,7 @@ NOT_LOGGED_IN = (
 USER_NOT_FOUND = (
     simplejson.dumps({
         "message" : 'User not found'
-    }), 404
+    }), 403
 )
 
 USER_ALREADY_EXISTS = (

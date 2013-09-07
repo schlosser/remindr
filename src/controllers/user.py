@@ -1,7 +1,7 @@
 
-
 from flask import session
 from flask.ext.pymongo import ObjectId
+from functools import wraps
 from passlib.hash import sha256_crypt as cryptor
 
 from sys import path
@@ -11,10 +11,25 @@ from config import errors as ERR
 from config import mongo_config as MONGO
 
 
+##############################################################################
+#   Wrappers
+##############################################################################
+
+def needs_data(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if 'data' not in kwargs or not kwargs['data']:
+            return ERR.NO_DATA
+        return f(*args, **kwargs)
+    return decorated_function
+
+
+##############################################################################
+#   controller methods
+##############################################################################
+
+@needs_data
 def login(mongo, data=None):
-    if not data:
-        return ERR.NO_DATA
-    
     user = mongo.db[MONGO.USERS].find_one({'email': data['email']})
     if not user:
         return ERR.USER_NOT_FOUND
@@ -27,6 +42,8 @@ def login(mongo, data=None):
     else:
         return ERR.BAD_LOGIN
 
+
+@needs_data
 def signup(mongo, data=None):
     if not data:
         return ERR.NO_DATA
@@ -47,11 +64,13 @@ def signup(mongo, data=None):
     addUserToSession(user)
     return RESP.LOGGED_IN
 
+
 def addUserToSession(user):
     session['username'] = user['username']
     session['email']    = user['email']
     session['password'] = user['password']
     session['uid']      = str(user['_id'])
+
 
 def logout():
     session.clear()
