@@ -15,7 +15,7 @@ app.config( ['$routeProvider', function($routeProvider) {
 
 	// ROUTES
 	.when('/loggedout', {templateUrl: 'static/partials/logout.html', controller: 'LogoutController'})
-	.when('/reminder/create/:id',	{templateUrl: 'static/partials/reminder/create.html', controller: 'ReminderKnownCreateController'})
+	.when('/create/:id',	{templateUrl: 'static/partials/reminder/create.html', controller: 'ReminderKnownCreateController'})
 	.when('/create',	{templateUrl: 'static/partials/reminder/create.html',	controller: 'ReminderStandardCreateController'})
 	.when('/login',		{templateUrl: 'static/partials/login.html',		controller: 'LoginController'})
 	.when('/signup',	{templateUrl: 'static/partials/signup.html',	controller: 'SignupController'})
