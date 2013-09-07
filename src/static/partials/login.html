@@ -1,10 +1,15 @@
-
-<div>
-	<form ng-submit="session.signin()">
-		Email: <input type="text" ng-model="session.email">
-		<br>
-		Password: <input type="password" ng-model="session.password">
-
+<div class="login page">
+	<form class="login form" ng-submit="login()">
+		<div class="form-group">
+			<label for="login-username">Username</label>
+			<input type="text" id="login-username" class="form-control" ng-model="loginData.username" placeholder="jappleseed">
+			<label for="login-email">Email</label>
+			<input type="email" id="login-email" class="form-control" ng-model="loginData.email" placeholder="john.appleseed@gmail.com">
+			<label for="login-password1">Password</label>
+			<input type="password" id="login-password1" class="form-control" ng-model="login.password1" placeholder=>
+			<label for="login-password2">Repeat Password</label>
+			<input type="password" id="login-password2" class="form-control" ng-model="user.password2">
+		</div>
 		<button type="submit">LOGIN</button>
 	</form>	
 </div>

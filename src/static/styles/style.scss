@@ -1,3 +1,11 @@
+$lightBlue: #66ACFF;
+$darkBlue: #356FB2;
+
+body, html {
+	padding-top: 0;
+	background-color: $lightBlue
+}
+
 .create-reminder-form {
 	.form-group {
 		label, input {
@@ -41,6 +49,40 @@
 		float:right;
 	}
 }
+
+form.form {
+	background-color: white;
+	margin-left: auto;
+	margin-right: auto;
+	width: 95%;
+	max-width: 400px;
+	padding: 20px;
+	border-radius: 5px;
+
+	.form-group {
+		height: 34px;
+		width: 100%;
+		label, input {
+			display: inline-block;
+		}
+		label {
+			text-align: right;
+			vertical-align: baseline;
+		}
+		input {
+		}
+		.col-xs-7 {
+			padding-left: 0;
+			padding-right: 0;
+		}
+	}
+
+	button.submit {
+		background-color: $darkBlue;
+		color:white;
+	}
+}
+
 .logo {
 	margin-left: auto;
 	margin-right: auto;
@@ -51,8 +93,5 @@
 	max-width: 800px;
 	margin-left: auto;
 	margin-right: auto;
-	text-align:center
-}
-body {
-	padding-top: 0;
+	text-align:center;
 }
