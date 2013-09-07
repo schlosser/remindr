@@ -78,18 +78,15 @@ def list(mongo):
 
 def form_to_dict(data):
     dict = {}
-    dict['creationDate'] = datetime.now().utcnow()
-    dict['completed'] = False
 
     for key in data:
-        if key in ['dueDate']:
-            # TODO
-            pass
-        elif 'date' in key.lower():
-            dict[key] = datetime.strptime(data[key], "%Y-%m-%d %H:%M").utcnow()
+        if 'date' in key.lower():
+            dict[key] = datetime.strptime(data[key], "%Y-%m-%d").utcnow()
         else:
             dict[key] = data[key]
 
+    dict['creationDate'] = datetime.now().utcnow()
+    dict['completed'] = False
     return dict
 
 
