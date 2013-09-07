@@ -1,0 +1,8 @@
+
+# virtualenv
+.Python
+include/
+lib/
+
+# grunt
+src/static/jsmin
