@@ -5,7 +5,8 @@ var app = angular.module('app', [
 	'app.util',
 	'app.flash',
 	'app.signup',
-	'app.reminder'
+	'app.reminder',
+    'app.configure'
 ]);
 
 app.config( ['$routeProvider', function($routeProvider) {
@@ -15,6 +16,7 @@ app.config( ['$routeProvider', function($routeProvider) {
 	.when('/reminder/create',	{templateUrl: 'static/partials/reminder/create.html',	controller: 'ReminderCreateController'})
 	.when('/login',		{templateUrl: 'static/partials/login.html',		controller: 'LoginController'})
 	.when('/signup',	{templateUrl: 'static/partials/signup.html',	controller: 'SignupController'})
+    .when('/configure', {templateUrl: 'static/partials/configure.html', controller: 'ConfigureController'})
 	.when('/',			{templateUrl: 'static/partials/home.html',		controller: 'HomeController'})
 
 	// default
