@@ -11,6 +11,9 @@ bin/
 # grunt
 src/static/jsmin
 node_modules
+
+# sass
+src/static/styles/style.min.css
 .sass-cache
 
 # secrets
