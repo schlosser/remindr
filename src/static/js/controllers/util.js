@@ -13,13 +13,16 @@ angular.module('app.util', [])
     $http.get('/session')
         .success(function(response) {
             $cookieStore.put('username', response.username);
+            $cookieStore.put('email', response.email);
             $cookieStore.put('id', response.id);
             $scope.session.username = $cookieStore.get('username') || null;
+            $scope.session.email = $cookieStore.get('email') || null;
             $scope.session.id       = $cookieStore.get('id') || null;
         });
 
     $rootScope.$on('$routeChangeSuccess', function() {
         $scope.session.username = $cookieStore.get('username') || null;
+        $scope.session.email = $cookieStore.get('email') || null;
         $scope.session.id       = $cookieStore.get('id') || null;
     });
 
@@ -27,6 +30,7 @@ angular.module('app.util', [])
         $http.post('/logout')
             .success( function (data) {
                 $cookieStore.remove('username');
+                $cookieStore.remove('email');
                 $cookieStore.remove('id');
                 $location.url('/loggedout');
             })
@@ -47,10 +51,12 @@ angular.module('app.util', [])
                 delete $scope.session.email;
                 delete $scope.session.password;
 
-                $cookieStore.put('username',response.email);
+                $cookieStore.put('username',response.username);
+                $cookieStore.put('email',response.email);
                 $cookieStore.put('id',      response.id);
 
                 $scope.session.username = $cookieStore.get('username') || null;
+                $scope.session.email = $cookieStore.get('email') || null;
                 $scope.session.id = $cookieStore.get('id') || null;
 
                 if ($location.url() == '/') {
