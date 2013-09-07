@@ -6,6 +6,7 @@
 .Python
 include/
 lib/
+bin/
 
 # grunt
 src/static/jsmin
