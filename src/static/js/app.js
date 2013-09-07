@@ -3,7 +3,6 @@ var app = angular.module('app', [
 	'ngCookies',
 	'app.header',
 	'app.home',
-	'app.login',
 	'app.util',
 	'app.flash',
 	'app.signup',
