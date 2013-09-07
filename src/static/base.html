@@ -12,6 +12,13 @@
 		
 	</div>
 
+	<div>
+		<div class="container" ng-controller="Flash">
+			<div class="alert" ng-show="flash.get().length">
+				{{ flash.get() }}
+			</div>
+		</div> <!-- end flash messages -->
+	</div>
 
 	<div ng-view>
 		
@@ -20,7 +27,7 @@
 	<!-- library imports -->
 	<!-- 
 	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.5.0/ui-bootstrap-tpls.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.5.0/ui-bootstrap-tpls.min.js"></script>
 	-->
 	<script src="static/fake_cdn/angular.min.js"></script>  
 	<script src="static/fake_cdn/ui-bootstrap-tpls.min.js"></script>  

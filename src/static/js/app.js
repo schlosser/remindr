@@ -1,7 +1,9 @@
 
 var app = angular.module('app', [
 	'app.home',
-    'app.login'
+    'app.login',
+    'app.util',
+    'app.flash'
 ]);
 
 app.config( ['$routeProvider', function($routeProvider) {
