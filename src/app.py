@@ -96,10 +96,11 @@ def logout():
 # returns json w/ unique identifier
 @app.route('/session')
 def get_session():
-    if 'username' in session and 'role' in session:
+    if 'username' in session:
         return simplejson.dumps({
             'username'  : session['username'],
-            'uid'       : session['uid']
+            'email'     : session['email'],
+            'id'       : session['uid']
         }), 200
     return ERR.NOT_LOGGED_IN
 
@@ -113,6 +114,7 @@ def log_out():
 
 @app.route('/', methods=['GET'])
 def home():
+    print session
     return make_response(open('src/static/base.html').read())
 
 
