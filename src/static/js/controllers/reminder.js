@@ -1,7 +1,7 @@
 
-angular.module('app.home', [])
+angular.module('app.reminder', [])
 
-.controller('HomeController', function ($scope, $http) {
+.controller('ReminderCreateController', function ($scope, $http) {
 	$scope.message = {};
 
 	// TODO: delete
@@ -12,7 +12,6 @@ angular.module('app.home', [])
 		dueTime: "14:03",
 		details: "Details, bitch."
 	};
-
 
 	$scope.createReminder = function() {
 
