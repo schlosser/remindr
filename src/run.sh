@@ -3,6 +3,6 @@
 cd ..
 grunt
 source bin/activate
-source config/test_config.sh
+source src/config/test_config.sh
 python src/app.py
 
