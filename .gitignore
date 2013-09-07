@@ -11,6 +11,7 @@ bin/
 # grunt
 src/static/jsmin
 node_modules
+.sass-cache
 
 # secrets
 src/config/deploy_config.sh

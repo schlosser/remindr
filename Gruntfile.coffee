@@ -26,6 +26,11 @@ module.exports = (grunt) ->
 				src:	'generated/app.ngmin.js'
 				dest:	'src/static/jsmin/<%= pkg.name %>.min.js'
 
+		sass:
+			deploy:
+				src:	['src/static/styles/style.scss']
+				dest:	'src/static/styles/style.min.css'
+
 		watch:
 			scripts:
 				files:
@@ -39,7 +44,8 @@ module.exports = (grunt) ->
 	grunt.loadNpmTasks 'grunt-contrib-concat'
 	grunt.loadNpmTasks 'grunt-contrib-uglify'
 	grunt.loadNpmTasks 'grunt-contrib-watch'
+	grunt.loadNpmTasks 'grunt-contrib-sass'
 	grunt.loadNpmTasks 'grunt-ngmin'
 
 	grunt.registerTask 'default', ['build', 'clean']
-	grunt.registerTask 'build', ['concat', 'ngmin', 'uglify']
+	grunt.registerTask 'build', ['concat', 'ngmin', 'uglify', 'sass']
