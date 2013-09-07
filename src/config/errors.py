@@ -18,6 +18,12 @@ USER_NOT_FOUND = (
     }), 404
 )
 
+USER_ALREADY_EXISTS = (
+    simplejson.dumps({
+        "message": 'Email already used'
+    }), 400
+)
+
 BAD_LOGIN = (
     simplejson.dumps({
         "message" : "Your login credentials were invalid"
