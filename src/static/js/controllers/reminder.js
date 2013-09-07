@@ -1,7 +1,7 @@
 
 angular.module('app.reminder', [])
 
-.controller('ReminderStandardCreateController', function ($scope, $http) {
+.controller('ReminderStandardCreateController', function ($scope, $http, $location, flash) {
 
 	$scope.initForm = function () {
 		$scope.message = {};
@@ -17,7 +17,7 @@ angular.module('app.reminder', [])
 	};
 
 	$scope.create = function () {
-		createReminder ($scope, $http);
+		createReminder ($scope, $http, $location, flash);
 	};
 })
 
@@ -45,7 +45,7 @@ angular.module('app.reminder', [])
 	};
 
 	$scope.create = function () {
-		createReminder ($scope, $http);
+		createReminder ($scope, $http, $location, flash);
 	};
 })
 
@@ -63,24 +63,26 @@ angular.module('app.reminder', [])
 				console.log(err);
 			});
 	};
-
 });
 
-var createReminder = function ($scope, $http) {
+var createReminder = function ($scope, $http, $location, flash) {
 	// format data
 	var data = $scope.message;
 	data['due'] = data['dueDate'] + ' ' + data['dueTime'];
 	delete data['dueDate'];
 	delete data['dueTime'];
 
-	console.log(data);
 	$http.post('/reminder/create', $scope.message)
 		.success(function(response){
-			console.log("Success:");
-			console.log(response);
+			flash.notify(response.message);
+			$location.url('/');
 		})
-		.error(function(err){
-			console.log("Error:");
-			console.log(err);
+		.error(function(err, status){
+			if (status === 403) {
+				flash.alertError(err.message);
+			}
+			var datetime = data.due.split(' ');
+			$scope.message.dueDate = datetime[0];
+			$scope.message.dueTime = datetime[1];
 		});
-}
+};

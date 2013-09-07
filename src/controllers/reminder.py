@@ -6,6 +6,8 @@ from functools import wraps
 from datetime import datetime
 import simplejson
 
+import user as user_controller
+
 from sys import path
 path.append('../')
 from config import responses as RESP
@@ -32,7 +34,11 @@ def needs_data(f):
 
 @needs_data
 def create(mongo, data=None):
-    mongo.db[MONGO.REMINDERS].insert(form_to_dict(data))
+    data = form_to_dict(data)
+    if not user_controller.user_exists(mongo, {'username': data['user']}):
+        return ERR.USER_NOT_FOUND
+
+    mongo.db[MONGO.REMINDERS].insert(data)
     return RESP.REMINDER_CREATED
 
 

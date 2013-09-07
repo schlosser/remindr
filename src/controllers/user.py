@@ -81,13 +81,31 @@ def signup(mongo, data=None):
     return RESP.LOGGED_IN
 
 
+def logout():
+    session.clear()
+    return RESP.LOGGED_OUT
+
+
+##############################################################################
+#   util methods
+##############################################################################
+
+def user_exists(mongo, data=None):
+
+    for identifier, method in [('_id', ObjectId), ('username', str), ('email', str)]:
+        if identifier in data.keys():
+            user = mongo.db[MONGO.USERS].find_one({
+                identifier : method(data[identifier])
+            })
+            if user:
+                return True
+
+    return False
+
+
 def addUserToSession(user):
     session['username'] = user['username']
     session['email']    = user['email']
     session['uid']      = str(user['_id'])
 
-
-def logout():
-    session.clear()
-    return RESP.LOGGED_OUT
 

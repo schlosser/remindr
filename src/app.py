@@ -50,7 +50,7 @@ def logout_required(f):
 def get_user(identifier):
     return user_controller.get_user(mongo, uid=identifier, data={'return': ['username']})
 
-
+    
 ##############################################################################
 #   reminder
 ##############################################################################
@@ -113,6 +113,7 @@ def get_session():
 def log_out():
     session.clear()
     return 'Logged out', 200
+
 
 @app.route('/', methods=['GET'])
 def home():
