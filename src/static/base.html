@@ -1,11 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="app">
 <head>
-	<link rel="stylesheet" href="//bootswatch.com/flatly/bootstrap.min.css">
-	<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="static/fake_cdn/bootstrap.min.css">
+	<link rel="stylesheet" href="static/fake_cdn/flatly.min.css">
 
 	<title></title>
 </head>
 <body>
+
+	<div ng-view>
+		
+	</div>
+
+	<!-- library imports -->
+	<!-- 
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.5.0/ui-bootstrap-tpls.min.js"></script>
+	-->
+	<script src="static/fake_cdn/angular.min.js"></script>  
+	<script src="static/fake_cdn/ui-bootstrap-tpls.min.js"></script>  
+	<!-- angular -->
+	<script src="static/jsmin/remindr.min.js"></script>  
 </body>
 </html>

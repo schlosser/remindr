@@ -10,6 +10,7 @@ bin/
 
 # grunt
 src/static/jsmin
+node_modules
 
 # secrets
 src/config/deploy_config.sh
