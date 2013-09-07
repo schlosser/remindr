@@ -94,9 +94,11 @@ def get_forwarders():
 def login():
     return user_controller.login(mongo, data=simplejson.loads(request.data))
 
+
 @app.route('/signup', methods=['POST'])
 def signup():
     return user_controller.signup(mongo, data=simplejson.loads(request.data))
+
 
 @app.route('/logout', methods=['POST'])
 @login_required
@@ -129,10 +131,8 @@ def log_out():
 
 @app.route('/', methods=['GET'])
 def home():
-    print session
     return make_response(open('src/static/base.html').read())
 
 
 if __name__ == '__main__':
     app.run()
-

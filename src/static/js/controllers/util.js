@@ -6,7 +6,7 @@ angular.module('app.util', [])
 })
 
 
-.controller('Session', function($scope, $cookieStore, $rootScope, $http, flash, $location) {
+.controller('Session', function($scope, $cookieStore, $rootScope, $http, flash, $location, $window) {
 
 	$scope.session = {};
 
@@ -64,7 +64,8 @@ angular.module('app.util', [])
 					return;
 				}
 				flash.notify("signed in");
-				$location.url('/');
+				//$location.url('/');
+				$window.location.href = '/#/';
 			})
 			.error( function (err) {
 				console.log(err);

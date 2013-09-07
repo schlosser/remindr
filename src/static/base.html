@@ -4,23 +4,22 @@
 	<link rel="stylesheet" href="static/fake_cdn/bootstrap.min.css">
 	<link rel="stylesheet" href="static/fake_cdn/flatly.min.css">
 	<link rel="stylesheet" href="static/styles/style.min.css">
+
+	<script type="text/javascript" src="//use.typekit.net/iuc0lri.js"></script>
+	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+	
 	<title>Remindr</title>
 </head>
 <body ng-controller="Session">
+	<div ng-include="'static/partials/header.html'"></div>
+	
+	<div class="container" ng-controller="Flash">
+		<div class="alert" ng-show="flash.get().length">
+			{{ flash.get() }}
+		</div>
+	</div> <!-- end flash messages -->
 
-	<div ng-include="'static/partials/header.html'">
-
-	</div>
-
-	<div>
-		<div class="container" ng-controller="Flash">
-			<div class="alert" ng-show="flash.get().length">
-				{{ flash.get() }}
-			</div>
-		</div> <!-- end flash messages -->
-	</div>
-
-	<div ng-view>
+	<div ng-view class="ng-view">
 		
 	</div>
 
@@ -30,6 +29,7 @@
 	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.5.0/ui-bootstrap-tpls.min.js"></script>
 	-->
+	
 	<script src="static/fake_cdn/angular.min.js"></script>  
 	<script src="static/fake_cdn/ui-bootstrap-tpls.min.js"></script>  
 	<script src="static/lib/angular-cookies.min.js"></script>  

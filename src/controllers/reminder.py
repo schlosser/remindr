@@ -55,14 +55,12 @@ def complete(mongo, data=None):
     return RESP.REMINDER_COMPLETED
 
 
-@needs_data
 def list(mongo):
     cursor = mongo.db[MONGO.REMINDERS].find({
-        'email'     : session['email'],
+        'user'     : session['username'],
         'completed' : False
     })
     reminders = [mongo_to_dict(item) for item in cursor]
-    print reminders
 
     if len(reminders) == 0:
         return ERR.NO_REMINDERS_FOUND
@@ -82,22 +80,25 @@ def form_to_dict(data):
     dict['completed'] = False
 
     for key in ['due', 'task', 'details', 'user', 'priority']:
-        dict[key] = data[key]
+        if key in data:
+            dict[key] = data[key]
 
     return dict
 
 
 def mongo_to_dict(data):
     dict = {}
-
     for key in data:
+
         if key == '_id':
             dict[key] = str(data[key])
-        elif 'date' in key.lower():
-            dict[key] = data[key].strftime(MONGO.DATETIME_FORMAT)
+        elif key in ['completed']:
+            dict[key] = data[key]
+        elif 'date' in key.lower() or key == 'due':
+            dict[key] = data[key].encode('utf-8')
         elif key in ['priority']:
             pass
         else:
-            dict[key].encode('utf-8')
+            dict[key] = data[key].encode('utf-8')
 
     return dict

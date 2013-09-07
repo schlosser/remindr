@@ -1,10 +1,26 @@
-
-<div>
-	<form ng-submit="session.signin()">
-		Email: <input type="text" ng-model="session.email">
-		<br>
-		Password: <input type="password" ng-model="session.password">
-
-		<button type="submit">LOGIN</button>
-	</form>	
+<div class="login page">
+	<form class="login form form-horizontal" ng-submit="session.signin()">
+		<h3>Sign in</h3>
+		<div class="row">
+			<div class="col-sm-5 control-label">
+				<label for="login-email">Email</label>
+			</div>
+			<div class="col-sm-7">
+				<input type="email" id="login-email" class="form-control" ng-model="session.email" placeholder="john.appleseed@gmail.com">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-5 control-label">
+				<label for="login-password1">Password</label>
+			</div>
+			<div class="col-sm-7">
+				<input type="password" id="login-password1" class="form-control" ng-model="session.password" placeholder="Password">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12">
+				<button type="submit" class="submit form-control">Sign In</button>
+			</div>
+		</div>
+	</form>
 </div>
