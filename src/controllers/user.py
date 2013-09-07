@@ -7,13 +7,14 @@ from sys import path
 path.append('../')
 from config import responses as RESP
 from config import errors as ERR
+from config import mongo_config as MONGO
 
 
 def login(mongo, data=None):
     if not data:
         return ERR.NO_DATA
     
-    user = mongo.find_one({'email': data['email']})
+    user = mongo.db[MONGO.USERS].find_one({'email': data['email']})
     if not user:
         return ERR.USER_NOT_FOUND
 
