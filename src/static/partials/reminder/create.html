@@ -1,22 +1,22 @@
-<h1 class="logo">Remindr</h1>
+<h1 class="logo remindr">Remindr</h1>
 <div class="composer-wrapper container">
 	<form class="create-reminder-form" role="form" ng-submit="createReminder()">
 		<div class="row top">
-			<div class="col-md-6">
+			<div class="col-md-6 left">
 				<label class="control-label" for="message-name">Remind2</label>
 				<input type="text" class="form-control input-lg" id="message-name" placeholder="jappleseed" ng-model="message.user">
 			</div>
-			<div class="col-md-6">
+			<div class="col-md-6 right">
 				<label class="control-label" for="message-task">to</label>
 				<input type="text" class="form-control input-lg" id="message-task" placeholder="take out the trash" ng-model= "message.task">
 			</div>
 		</div>
 		<div class="row bottom">
-			<div class="col-md-6">
+			<div class="col-md-6 left">
 				<label class="control-label" for="message-date">by</label>
 				<input type="date" class="form-control input-lg" id="message-date" ng-model= "message.dueDate">
 			</div>
-			<div class="col-md-6">
+			<div class="col-md-6 right">
 				<label class="control-label" for="message-time">at</label>
 				<input type="time" class="form-control input-lg" id="message-time" ng-model="message.dueTime">
 			</div>

@@ -11,19 +11,15 @@
 	<title>Remindr</title>
 </head>
 <body ng-controller="Session">
-	<div ng-include="'static/partials/header.html'">
+	<div ng-include="'static/partials/header.html'"></div>
+	
+	<div class="container" ng-controller="Flash">
+		<div class="alert" ng-show="flash.get().length">
+			{{ flash.get() }}
+		</div>
+	</div> <!-- end flash messages -->
 
-	</div>
-
-	<div>
-		<div class="container" ng-controller="Flash">
-			<div class="alert" ng-show="flash.get().length">
-				{{ flash.get() }}
-			</div>
-		</div> <!-- end flash messages -->
-	</div>
-
-	<div ng-view>
+	<div ng-view class="ng-view">
 		
 	</div>
 
