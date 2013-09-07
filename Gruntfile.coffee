@@ -32,6 +32,14 @@ module.exports = (grunt) ->
 				dest:	'src/static/styles/style.min.css'
 
 		watch:
+			sass:
+				files:
+					['src/static/styles/**.scss']
+				tasks:
+					['sass']
+				options:
+					livereload: true
+
 			scripts:
 				files:
 					['src/static/js/**/*.js']
@@ -47,5 +55,6 @@ module.exports = (grunt) ->
 	grunt.loadNpmTasks 'grunt-contrib-sass'
 	grunt.loadNpmTasks 'grunt-ngmin'
 
+	grunt.registerTask 'style', ['sass']
 	grunt.registerTask 'default', ['build', 'clean']
 	grunt.registerTask 'build', ['concat', 'ngmin', 'uglify', 'sass']
