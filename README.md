@@ -13,5 +13,9 @@ Allow others to make reminders for you
     source bin/activate
     pip install -r requirements.txt
 
+###Running
 
+(in the `src` directory)
+
+    ./run.sh
 
