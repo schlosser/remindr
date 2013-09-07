@@ -3,78 +3,90 @@ $darkBlue: #356FB2;
 
 body, html {
 	padding-top: 0;
-	background-color: $lightBlue
+	height: 100%;
+	background-color: $lightBlue;
+}
+
+.ng-view {
+	height: 90%;
 }
 
 .create-reminder-form {
-	.form-group {
-		label, input {
-			display: inline;
-			width:inherit;
-			height: 50px;
-			font-size: 18px;
-		}
-		.row {
-			display: block;
-		}
+	.row {
+		margin-bottom: 10px;
+	}
+	input, label {
+		display: inline;
+	}
+	.top {
 		input {
-		}
-		text-align: right;
-
-	}
-	.left {
-		float:left;
-	}
-	.right {
-		float:right;
-	}
-	.left, .right {
-		.row {
-			margin-left: 0;
-			margin-right:0;
+			max-width: 250px;
 		}
 	}
 	.bottom {
-		.input {
-			width: 150px;
+		input {
+			width: auto;
+			height: 2.5em;
 		}
 	}
-	.top {
-		.input {
-			width: 300px;
-		}
+	.right {
+		text-align: left;
+	}
+	.left {
+		text-align: right;
 	}
 	button {
-		margin-top: 20px;
 		float:right;
 	}
 }
 
 .navbar {
 	border-radius: 0 !important;
+	margin: 0;
 }
 
-form.form {
-	background-color: white;
-	margin: 0 auto;
-	max-width: 400px;
-	padding: 20px;
-	border-radius: 5px;
+.page {
+	background-color: $lightBlue;
+	width: 100%;
+	height: 100%;
+	position: relative;
 
-	h3 {
-		margin-top: 0;
-		text-align: center;
-	}
+	form.form {
+		&.login {
+			max-height: 220px;	
+		}
+		&.signup {
+			max-height: 300px;
+		}
+		position: absolute;
+		top: 0;
+		right: 0;
+		left: 0;
+		bottom: 0;
+		margin: auto;
+		background-color: white;
+		width: 95%;
+		height: 95%;
+		height: auto;
+		max-width: 400px;
+		padding: 20px;
+		border-radius: 5px;
 
-	.row {
-		margin-bottom: 10px;
-	}
+		h3 {
+			margin-top: 0;
+			text-align: center;
+		}
 
-	.submit {
-		margin-top: 10px;
-		background-color: $darkBlue;
-		color:white;
-		min-width: 80px;
+		.row {
+			margin-bottom: 10px;
+		}
+
+		.submit {
+			margin-top: 10px;
+			background-color: $darkBlue;
+			color:white;
+			min-width: 80px;
+		}
 	}
 }
 
@@ -83,6 +95,7 @@ form.form {
 	margin-right: auto;
 	width: 400px;
 	text-align: center;
+	font-size: 6em;
 }
 
 .navbar-brand {
@@ -101,4 +114,19 @@ form.form {
 	font-style: normal;
 	font-weight: 700;
 	text-transform: lowercase;
+}
+
+
+
+@media screen and (max-width: 767px) {
+	.page form.form {
+		&.login {
+			min-height: 275px;
+			max-height: 275px;	
+		}
+		&.signup {
+			min-height: 430px;
+			max-height: 430px;
+		}
+	}	
 }
