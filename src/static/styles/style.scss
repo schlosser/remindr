@@ -56,9 +56,7 @@ body, html {
 
 form.form {
 	background-color: white;
-	margin-left: auto;
-	margin-right: auto;
-	width: 95%;
+	margin: 0 auto;
 	max-width: 400px;
 	padding: 20px;
 	border-radius: 5px;
@@ -86,9 +84,21 @@ form.form {
 	width: 400px;
 	text-align: center;
 }
+
+.navbar-brand {
+	font-size: 2em;
+}
+
 .composer-wrapper {
 	max-width: 800px;
 	margin-left: auto;
 	margin-right: auto;
 	text-align:center;
+}
+
+.remindr {
+	font-family: "bree",sans-serif;
+	font-style: normal;
+	font-weight: 700;
+	text-transform: lowercase;
 }
