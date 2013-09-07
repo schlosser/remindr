@@ -2,15 +2,27 @@
 angular.module('app.home', [])
 
 .controller('HomeController', function ($scope, $http) {
+	$scope.message = {};
+
+	// TODO: delete
 	$scope.message = {
-		name: "Dan",
+		user: "Dan",
 		task: "fix your shit",
-		date: "2013-04-01",
-		time: "14:03",
+		dueDate: "2013-04-01",
+		dueTime: "14:03",
 		details: "Details, bitch."
 	};
+
+
 	$scope.createReminder = function() {
-		console.log($scope.message);
+
+		// format data
+		var data = $scope.message;
+		data['due'] = data['dueDate'] + ' ' + data['dueTime'];
+		delete data['dueDate'];
+		delete data['dueTime'];
+
+		console.log(data);
 		$http.post('/reminder/create', $scope.message)
 			.success(function(response){
 				console.log("Success:");
@@ -20,7 +32,5 @@ angular.module('app.home', [])
 				console.log("Error:");
 				console.log(err);
 			});
-	}
+	};
 });
-
-

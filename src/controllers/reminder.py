@@ -13,6 +13,8 @@ from config import errors as ERR
 from config import mongo_config as MONGO
 
 
+DATETIME_FORMAT = "%Y-%m-%d %H:%M"
+
 ##############################################################################
 #   Wrappers
 ##############################################################################
@@ -78,15 +80,12 @@ def list(mongo):
 
 def form_to_dict(data):
     dict = {}
-
-    for key in data:
-        if 'date' in key.lower():
-            dict[key] = datetime.strptime(data[key], "%Y-%m-%d").utcnow()
-        else:
-            dict[key] = data[key]
-
-    dict['creationDate'] = datetime.now().utcnow()
+    dict['creationDate'] = datetime.now().strftime(DATETIME_FORMAT)
     dict['completed'] = False
+
+    for key in ['due', 'task', 'details', 'user']:
+        dict[key] = data[key]
+
     return dict
 
 
@@ -97,7 +96,7 @@ def mongo_to_dict(data):
         if key == '_id':
             dict[key] = str(data[key])
         elif 'date' in key.lower():
-            dict[key] = data[key].strftime("%Y-%m-%d %H:%M")
+            dict[key] = data[key].strftime(DATETIME_FORMAT)
         elif key in ['priority']:
             pass
         else:
