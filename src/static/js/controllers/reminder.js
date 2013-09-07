@@ -16,24 +16,8 @@ angular.module('app.reminder', [])
 		};
 	};
 
-	$scope.createReminder = function() {
-
-		// format data
-		var data = $scope.message;
-		data['due'] = data['dueDate'] + ' ' + data['dueTime'];
-		delete data['dueDate'];
-		delete data['dueTime'];
-
-		console.log(data);
-		$http.post('/reminder/create', $scope.message)
-			.success(function(response){
-				console.log("Success:");
-				console.log(response);
-			})
-			.error(function(err){
-				console.log("Error:");
-				console.log(err);
-			});
+	$scope.create = function () {
+		createReminder ($scope, $http);
 	};
 })
 
@@ -60,24 +44,8 @@ angular.module('app.reminder', [])
 			});
 	};
 
-	$scope.createReminder = function () {
-
-		// format data
-		var data = $scope.message;
-		data['due'] = data['dueDate'] + ' ' + data['dueTime'];
-		delete data['dueDate'];
-		delete data['dueTime'];
-
-		console.log(data);
-		$http.post('/reminder/create', $scope.message)
-			.success(function(response){
-				console.log("Success:");
-				console.log(response);
-			})
-			.error(function(err){
-				console.log("Error:");
-				console.log(err);
-			});
+	$scope.create = function () {
+		createReminder ($scope, $http);
 	};
 })
 
@@ -97,3 +65,22 @@ angular.module('app.reminder', [])
 	};
 
 });
+
+var createReminder = function ($scope, $http) {
+	// format data
+	var data = $scope.message;
+	data['due'] = data['dueDate'] + ' ' + data['dueTime'];
+	delete data['dueDate'];
+	delete data['dueTime'];
+
+	console.log(data);
+	$http.post('/reminder/create', $scope.message)
+		.success(function(response){
+			console.log("Success:");
+			console.log(response);
+		})
+		.error(function(err){
+			console.log("Error:");
+			console.log(err);
+		});
+}
