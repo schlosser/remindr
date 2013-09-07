@@ -84,7 +84,6 @@ def signup(mongo, data=None):
 def addUserToSession(user):
     session['username'] = user['username']
     session['email']    = user['email']
-    session['password'] = user['password']
     session['uid']      = str(user['_id'])
 
 

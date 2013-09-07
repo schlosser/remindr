@@ -1,5 +1,6 @@
 
 var app = angular.module('app', [
+	'ngCookies',
 	'app.home',
 	'app.login',
 	'app.util',
@@ -12,6 +13,7 @@ app.config( ['$routeProvider', function($routeProvider) {
 	$routeProvider
 
 	// ROUTES
+	.when('/loggedout', {templateUrl: 'static/partials/logout.html', controller: 'LogoutController'})
 	.when('/reminder/create/:id',	{templateUrl: 'static/partials/reminder/create.html', controller: 'ReminderKnownCreateController'})
 	.when('/reminder/create',	{templateUrl: 'static/partials/reminder/create.html',	controller: 'ReminderStandardCreateController'})
 	.when('/login',		{templateUrl: 'static/partials/login.html',		controller: 'LoginController'})

@@ -93,6 +93,24 @@ def logout():
 #   main
 ##############################################################################
 
+# returns json w/ unique identifier
+@app.route('/session')
+def get_session():
+    if 'username' in session and 'role' in session:
+        return simplejson.dumps({
+            'username'  : session['username'],
+            'uid'       : session['uid']
+        }), 200
+    return ERR.NOT_LOGGED_IN
+
+
+# logout endpoint. clears the session
+@app.route('/logout', methods=['POST'])
+@login_required
+def log_out():
+    session.clear()
+    return 'Logged out', 200
+
 @app.route('/', methods=['GET'])
 def home():
     return make_response(open('src/static/base.html').read())
