@@ -114,10 +114,8 @@ def log_out():
 
 @app.route('/', methods=['GET'])
 def home():
-    print session
     return make_response(open('src/static/base.html').read())
 
 
 if __name__ == '__main__':
     app.run()
-
