@@ -1,3 +1,54 @@
-.body {
-	
+.form-group {
+	label, input {
+		display: inline;
+		width:inherit;
+		height: 50px;
+		font-size: 18px;
+	}
+	.row {
+		display: block;
+	}
+	input {
+	}
+	text-align: right;
+
+}
+.left {
+	float:left;
+}
+.right {
+	float:right;
+}
+.left, .right {
+	.row {
+		margin-left: 0;
+		margin-right:0;
+	}
+}
+.bottom {
+	.input {
+		width: 150px;
+	}
+}
+.top {
+	.input {
+		width: 300px;
+	}
+}
+
+.logo {
+	margin-left: auto;
+	margin-right: auto;
+	width: 400px;
+	text-align: center;
+}
+.composer-wrapper {
+	max-width: 800px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align:center
+}
+button {
+	margin-top: 20px;
+	float:right;
 }
