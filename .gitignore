@@ -19,3 +19,6 @@ src/static/styles/style.min.css
 # secrets
 src/config/deploy_config.sh
 
+# angular
+!src/static/lib
+

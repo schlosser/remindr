@@ -1,9 +1,9 @@
 
 <div>
-	<form ng-submit="login()">
-		Email: <input type="text" ng-model="user.email">
+	<form ng-submit="session.signin()">
+		Email: <input type="text" ng-model="session.email">
 		<br>
-		Password: <input type="password" ng-model="user.password">
+		Password: <input type="password" ng-model="session.password">
 
 		<button type="submit">LOGIN</button>
 	</form>	

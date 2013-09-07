@@ -43,7 +43,16 @@ def logout_required(f):
 
 
 ##############################################################################
-#   authentication
+#   user
+##############################################################################
+
+@app.route('/user/<identifier>', methods=['GET'])
+def get_user(identifier):
+    return user_controller.get_user(mongo, uid=identifier, data={'return': ['username']})
+
+
+##############################################################################
+#   reminder
 ##############################################################################
 
 @app.route('/reminder/create', methods=['POST'])
@@ -84,8 +93,28 @@ def logout():
 #   main
 ##############################################################################
 
+# returns json w/ unique identifier
+@app.route('/session')
+def get_session():
+    if 'username' in session:
+        return simplejson.dumps({
+            'username'  : session['username'],
+            'email'     : session['email'],
+            'id'       : session['uid']
+        }), 200
+    return ERR.NOT_LOGGED_IN
+
+
+# logout endpoint. clears the session
+@app.route('/logout', methods=['POST'])
+@login_required
+def log_out():
+    session.clear()
+    return 'Logged out', 200
+
 @app.route('/', methods=['GET'])
 def home():
+    print session
     return make_response(open('src/static/base.html').read())
 
 

@@ -6,8 +6,11 @@
 	<link rel="stylesheet" href="static/styles/style.min.css">
 	<title>Remindr</title>
 </head>
-<body>
-	<div ng-include="'static/partials/header.html'"></div>
+<body ng-controller="Session">
+
+	<div ng-include="'static/partials/header.html'">
+
+	</div>
 
 	<div>
 		<div class="container" ng-controller="Flash">
@@ -29,6 +32,7 @@
 	-->
 	<script src="static/fake_cdn/angular.min.js"></script>  
 	<script src="static/fake_cdn/ui-bootstrap-tpls.min.js"></script>  
+	<script src="static/lib/angular-cookies.min.js"></script>  
 	<!-- angular -->
 	<script src="static/jsmin/remindr.min.js"></script>  
 </body>
