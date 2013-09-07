@@ -2,7 +2,7 @@
 # mongo settings
 export MONGO_HOST="localhost"
 export MONGO_PORT="27017"
-export MONGO_DBNAME="reminder"
+export MONGO_DBNAME="remindr"
 export MONGO_USERNAME="test_user"
 export MONGO_PASSWORD="test_mongo"
 

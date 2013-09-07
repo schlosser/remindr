@@ -13,6 +13,13 @@ Allow others to make reminders for you
     source bin/activate
     pip install -r requirements.txt
 
+setting up mongo users
+
+    mongo
+    use remindr
+    db.addUser({user: 'test_user', pwd: 'test_mongo', roles: ['readWrite']});
+
+
 ###Running
 
 (in the `src` directory)
