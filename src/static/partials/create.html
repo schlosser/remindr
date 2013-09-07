@@ -2,25 +2,23 @@
 <div class="composer-wrapper container">
 	<form class="create-reminder-form form-inline" role="form" ng-submit="createReminder()">
 		<div class="row">
-			<div class="left col-md-6">
-				<div class="top row form-group">
-					<label for="message-name">Remind</label>
-					<input type="text" class="form-control-inline input-lg" id="message-name" placeholder="jappleseed" ng-model="message.user">
-				</div>
-				<div class="bottom row form-group">
-					<label for="message-date">by</label>
-					<input type="date" class="form-control-inline input-lg" id="message-date" ng-model= "message.dueDate">
-				</div>
+			<div class="col-md-6">
+				<label for="message-name">Remind2</label>
+				<input type="text" class="form-control-inline input-lg" id="message-name" placeholder="jappleseed" ng-model="message.user">
 			</div>
-			<div class="right col-md-6">
-				<div class="top row form-group">
-					<label for="message-task">to</label>
-					<input type="text" class="form-control-inline input-lg" id="message-task" placeholder="take out the trash" ng-model= "message.task">
-				</div>
-				<div class="bottom row form-group">
-					<label for="message-time">at</label>
-					<input type="time" class="form-control-inline input-lg" id="message-time" ng-model="message.dueTime">
-				</div>
+			<div class="col-md-6">
+				<label for="message-task">to</label>
+				<input type="text" class="form-control-inline input-lg" id="message-task" placeholder="take out the trash" ng-model= "message.task">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+				<label for="message-date">by</label>
+				<input type="date" class="form-control-inline input-lg" id="message-date" ng-model= "message.dueDate">
+			</div>
+			<div class="col-md-6">
+				<label for="message-time">at</label>
+				<input type="time" class="form-control-inline input-lg" id="message-time" ng-model="message.dueTime">
 			</div>
 		</div>
 		<div class="row">
