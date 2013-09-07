@@ -1,15 +1,26 @@
 <div class="login page">
-	<form class="login form" ng-submit="login()">
-		<div class="form-group">
-			<label for="login-username">Username</label>
-			<input type="text" id="login-username" class="form-control" ng-model="loginData.username" placeholder="jappleseed">
-			<label for="login-email">Email</label>
-			<input type="email" id="login-email" class="form-control" ng-model="loginData.email" placeholder="john.appleseed@gmail.com">
-			<label for="login-password1">Password</label>
-			<input type="password" id="login-password1" class="form-control" ng-model="login.password1" placeholder=>
-			<label for="login-password2">Repeat Password</label>
-			<input type="password" id="login-password2" class="form-control" ng-model="user.password2">
+	<form class="login form form-horizontal" ng-submit="signup()">
+		<h3>Sign in</h3>
+		<div class="row">
+			<div class="col-sm-5 control-label">
+				<label for="login-email">Email</label>
+			</div>
+			<div class="col-sm-7">
+				<input type="email" id="login-email" class="form-control" ng-model="loginData.email" placeholder="john.appleseed@gmail.com">
+			</div>
 		</div>
-		<button type="submit">LOGIN</button>
-	</form>	
+		<div class="row">
+			<div class="col-sm-5 control-label">
+				<label for="login-password1">Password</label>
+			</div>
+			<div class="col-sm-7">
+				<input type="password" id="login-password1" class="form-control" ng-model="login.password1" placeholder="Password">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12">
+				<button type="submit" class="submit form-control">Sign In</button>
+			</div>
+		</div>
+	</form>
 </div>

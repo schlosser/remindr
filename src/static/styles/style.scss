@@ -50,6 +50,10 @@ body, html {
 	}
 }
 
+.navbar {
+	border-radius: 0 !important;
+}
+
 form.form {
 	background-color: white;
 	margin-left: auto;
@@ -59,6 +63,11 @@ form.form {
 	padding: 20px;
 	border-radius: 5px;
 
+	h3 {
+		margin-top: 0;
+		text-align: center;
+	}
+
 	.row {
 		margin-bottom: 10px;
 	}
@@ -67,6 +76,7 @@ form.form {
 		margin-top: 10px;
 		background-color: $darkBlue;
 		color:white;
+		min-width: 80px;
 	}
 }
 
