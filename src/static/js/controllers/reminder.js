@@ -79,4 +79,21 @@ angular.module('app.reminder', [])
 				console.log(err);
 			});
 	};
+})
+
+.controller('ReminderListController', function ($scope, $http, flash) {
+
+	$scope.initList = function () {
+		$scope.reminderList = [];
+
+		$http.get('/reminder/list')
+			.success( function (response) {
+				console.log(response);
+				$scope.reminderList = response.reminders;
+			})
+			.error( function (err) {
+				console.log(err);
+			});
+	};
+
 });

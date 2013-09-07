@@ -1,6 +1,17 @@
 
 <h1 class= "logo">Welcome to <span class="remindr">Remindr</span></h1>
-<h4>
-	Debugging
-</h4>
+
+<h2>Reminders Left</h2>
+
+<div ng-controller="ReminderListController">
+	<div ng-init="initList()">
+		<ul>
+			<li ng-repeat="reminder in reminderList">
+				<pre>{{ reminder | json }}</pre>
+			</li>
+		</ul>
+	</div>
+</div>
+
+<h4>Debugging</h4>
 <pre>{{ session | json }}</pre>

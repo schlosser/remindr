@@ -79,9 +79,11 @@ def list_reminders():
 def login():
     return user_controller.login(mongo, data=simplejson.loads(request.data))
 
+
 @app.route('/signup', methods=['POST'])
 def signup():
     return user_controller.signup(mongo, data=simplejson.loads(request.data))
+
 
 @app.route('/logout', methods=['POST'])
 @login_required
