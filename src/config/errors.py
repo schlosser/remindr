@@ -3,6 +3,22 @@ import simplejson
 
 
 ######################################
+#   Reminder responses
+######################################
+
+NO_REMINDERS_FOUND = (
+    simplejson.dumps({
+        'message' : 'No reminders found'
+    }), 403
+)
+
+REMINDER_NOT_FOUND = (
+    simplejson.dumps({
+        'message' : 'Reminder not found'
+    }), 403
+)
+
+######################################
 #   User responses
 ######################################
 

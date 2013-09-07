@@ -45,9 +45,6 @@ def login(mongo, data=None):
 
 @needs_data
 def signup(mongo, data=None):
-    if not data:
-        return ERR.NO_DATA
-
     user = mongo.db[MONGO.USERS].find_one({'email': data['email']})
 
     if user:

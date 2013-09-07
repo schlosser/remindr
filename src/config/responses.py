@@ -22,3 +22,20 @@ LOGGED_OUT = (
         "message" : "Logged out!"
     }), 200
 )
+
+######################################
+#   Reminder responses
+######################################
+
+REMINDER_CREATED = (
+    simplejson.dumps({
+        "message" : "Reminder created"
+    }), 200
+)
+
+REMINDER_COMPLETED = (
+    simplejson.dumps({
+        "message" : "Reminder completed"
+    }), 200
+)
+

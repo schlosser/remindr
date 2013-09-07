@@ -11,6 +11,7 @@ from config import errors       as ERR
 
 # controllers
 from controllers import user as user_controller
+from controllers import reminder as reminder_controller
 
 app = Flask(__name__)
 app.config.from_object('config.flask_config')
@@ -39,6 +40,26 @@ def logout_required(f):
             return ERR.ALREADY_SIGNED_IN
         return f(*args, **kwargs)
     return decorated_function
+
+
+##############################################################################
+#   authentication
+##############################################################################
+
+@app.route('/reminder/create', methods=['POST'])
+def create_reminder():
+    return reminder_controller.create(mongo, data=simplejson.loads(request.data))
+
+
+@app.route('/reminder/complete/<rid>', methods=['POST'])
+def complete_reminder(rid):
+    return reminder_controller.complete(mongo, data={"id": rid})
+
+
+@login_required
+@app.route('/reminder/list', methods=['GET'])
+def list_reminders():
+    return reminder_controller.list(mongo)
 
 
 ##############################################################################
