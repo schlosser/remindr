@@ -28,19 +28,37 @@
                 <div class="checkbox-wrapper">
                     <input class="inline checkbox" ng-model="forwarders.forwarders.dropbox.active" type=checkbox>
                     <h3 class="inline">Dropbox Configuration</h3>
-                    <div class="row">
-                        <div class="col-sm-5 control-label">
-                            <label for="login-phonenumber">Dropbox todo file:</label>
-                        </div>
-                        <div class="col-sm-7">
-                            <div>{{forwarders.forwarders.dropbox.fileUrl}}</div>
-                        </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-5 control-label">
+                        <label for="login-phonenumber">Dropbox todo file:</label>
                     </div>
-                    <div class="row">
-                        <dropbox-chooser local-model="dropbox" data-link-type="direct" ng-disabled="!forwarders.forwarders.dropbox.active"></dropbox-chooser>
+                    <div class="col-sm-7">
+                        <div>{{forwarders.forwarders.dropbox.fileUrl}}</div>
                     </div>
                 </div>
-                <input class="form-control submit" type="submit" value="Save" \\/>
+                <div class="row">
+                    <dropbox-chooser local-model="dropbox" data-link-type="direct" ng-disabled="!forwarders.forwarders.dropbox.active"></dropbox-chooser>
+                </div>
+                <input class="form-control submit" type="submit" value="Save"/>
+            </tab>
+            <tab class="tab" heading="Github Issues">
+                <div class="checkbox-wrapper">
+                    <input class="inline checkbox" ng-model="forwarders.forwarders.github.active" type=checkbox>
+                    <h3 class="inline">Github Configuration</h3>
+                </div>
+                <div class="row">
+                    <div class="col-sm-5 control-label">
+                        <label for="login-githubApiToken">Github API token:</label>
+                    </div>
+                    <div class="col-sm-7">
+                        <input type="text" id="login-githubApiToken" class="form-control" ng-model="forwarders.forwarders.github.token" placeholder="c39...24b" ng-disabled="!forwarders.forwarders.github.active">
+                    </div>
+                </div>
+                <div class="row">
+                    
+                </div>
+                <input class="form-control submit" type="submit" value="Save"/>
             </tab>
             
         </tabset>
