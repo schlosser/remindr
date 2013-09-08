@@ -90,6 +90,7 @@ def list(mongo):
         'completed' : False
     })
     reminders = [mongo_to_dict(item) for item in cursor]
+    reminders = [time_to_epoch(item) for item in reminders]
 
     if len(reminders) == 0:
         return ERR.NO_REMINDERS_FOUND
@@ -102,6 +103,16 @@ def list(mongo):
 ##############################################################################
 #   utility methods
 ##############################################################################
+
+def time_to_epoch(data):
+    epoch = datetime.utcfromtimestamp(0)
+    for key in data:
+        if key in ['creationDate', 'due']:
+            delta = datetime.strptime(data[key], MONGO.DATETIME_FORMAT) - epoch
+            data[key] = delta.total_seconds()
+
+    return data
+
 
 def form_to_dict(data):
     dict = {}
