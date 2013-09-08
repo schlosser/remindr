@@ -65,7 +65,8 @@ def create_issue(TOKEN, USERNAME, reminder):
 
     data = {
         'title' : reminder['task'],
-        'body'  : reminder['details']
+        'body'  : reminder['details'],
+        'assignee'  : USERNAME
     }
 
     resp = requests.post(

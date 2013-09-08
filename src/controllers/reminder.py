@@ -92,6 +92,8 @@ def time_to_epoch(data):
     for key in data:
         if key in ['creationDate', 'due']:
             delta = datetime.strptime(data[key], MONGO.DATETIME_FORMAT) - epoch
+            # except (ValueError):
+            #     delta = datetime.strptime(data[key], '%d-%B %H:%M') - epoch
             data[key] = delta.total_seconds()
             
     return data
@@ -99,8 +101,15 @@ def time_to_epoch(data):
 
 def form_to_dict(data):
     dict = {}
-    dict['creationDate'] = datetime.now().strftime(MONGO.DATETIME_FORMAT)
+    try:
+        dict['creationDate'] = datetime.now().strftime(MONGO.DATETIME_FORMAT)
+    except (ValueError):
+        dict['creationDate'] = datetime.now().strftime('%d-%B %H:%M')
+
     dict['completed'] = False
+
+    for key in data:
+        print key, data[key]
 
     # JANKY AS COULD BE, SORRY NOT SORRY
     reminder_time = {}

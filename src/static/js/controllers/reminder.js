@@ -1,7 +1,7 @@
 
 angular.module('app.reminder', [])
 
-.controller('ReminderStandardCreateController', function ($scope, $http, $location, flash) {
+.controller('ReminderStandardCreateController', function ($scope, $http, $location, flash, $filter) {
 
 	$scope.initForm = function () {
 		$scope.userList = [];
@@ -23,11 +23,11 @@ angular.module('app.reminder', [])
 	};
 
 	$scope.create = function () {
-		createReminder ($scope, $http, $location, flash);
+		createReminder ($scope, $http, $location, flash, $filter);
 	};
 })
 
-.controller('ReminderKnownCreateController', function ($scope, $http, $routeParams, $location, flash) {
+.controller('ReminderKnownCreateController', function ($scope, $http, $routeParams, $location, flash, $filter) {
 	$scope.message = {};
 
 	$scope.initForm = function () {
@@ -54,7 +54,7 @@ angular.module('app.reminder', [])
 	};
 
 	$scope.create = function () {
-		createReminder ($scope, $http, $location, flash);
+		createReminder ($scope, $http, $location, flash, $filter);
 	};
 })
 
@@ -89,7 +89,7 @@ var getUserList = function ($scope, $http) {
 };
 
 
-var createReminder = function ($scope, $http, $location, flash) {
+var createReminder = function ($scope, $http, $location, flash, $filter) {
 	// format data
 	var data = $scope.message;
 	console.log(data);

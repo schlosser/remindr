@@ -9,6 +9,7 @@ import simplejson
 # config
 from config import responses    as RESP
 from config import errors       as ERR
+from config import mongo_config as MONGO
 
 # controllers
 from controllers import user as user_controller
@@ -146,7 +147,7 @@ def receive_dropbox_token():
 def get_reminder_defaults():
     today = datetime.now()
     return simplejson.dumps({
-        'date_str' : (today + timedelta(days=1)).strftime('%d-%B-%Y'),
+        'date_str' : (today + timedelta(days=1)).strftime(MONGO.DATEPICKER_FORMAT) + ' 00:00',
         'time_str' : today.strftime('%H:%M')
     }), 200
 
