@@ -6,7 +6,7 @@ from os import environ
 AUTH_TOKEN = environ['TWILIO_AUTH_TOKEN']
 ACCOUNT_SID = environ['TWILIO_ACCOUNT_SID']
 
-def run(reminder, forwarders):
+def run(reminder, forwarders, user=None):
 
     client = TwilioRestClient(ACCOUNT_SID, AUTH_TOKEN)
 

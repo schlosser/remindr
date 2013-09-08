@@ -15,6 +15,7 @@ from config import errors as ERR
 from config import mongo_config as MONGO
 from external_task_creators import twilio_forwarder
 from external_task_creators import dropbox_forwarder
+from external_task_creators import email_forwarder
 
 
 ##############################################################################
@@ -61,9 +62,9 @@ def forward(mongo, reminder):
         twilio_forwarder.run(reminder, forwarders)
     elif forwarders['current'] == 'dropbox':
         dropbox_forwarder.run(reminder, forwarders)
+    elif forwarders['current'] == 'email':
+        email_forwarder.run(reminder, forwarders, user)
     pass
-
-
 
 @needs_data
 def edit(mongo, data=None):
