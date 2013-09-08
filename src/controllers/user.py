@@ -77,11 +77,20 @@ def signup(mongo, data=None):
     user = mongo.db[MONGO.USERS].find_one({'_id': ObjectId(userId)})
 
     mongo.db[MONGO.FORWARDERS].insert({
-        'current' : 'sms',
+        'current' : 'email',
         'forwarders' : {
             'sms' : {
                 'number' : ''
             },
+            'dropbox' : {
+                'refreshToken' : ''
+            },
+            'gtasks' : {
+                'refreshToken' : ''
+            },
+            'gcalendar' : {
+                'refreshToken' : ''
+            }
         },
         'userId' : userId
     })

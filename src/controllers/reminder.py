@@ -1,4 +1,5 @@
 
+
 from flask import session
 from flask.ext.pymongo import ObjectId
 from functools import wraps
@@ -14,6 +15,7 @@ from config import errors as ERR
 from config import mongo_config as MONGO
 from external_task_creators import twilio_forwarder
 from external_task_creators import dropbox_forwarder
+from external_task_creators import email_forwarder
 
 
 ##############################################################################
@@ -92,16 +94,6 @@ def time_to_epoch(data):
             delta = datetime.strptime(data[key], MONGO.DATETIME_FORMAT) - epoch
             data[key] = delta.total_seconds()
             
-    return data
-
-
-def time_to_datetime(data):
-
-    for key in data:
-        if key in ['creationDate', 'due']:
-            dt = datetime.strptime(data[key], MONGO.DATETIME_FORMAT)
-            data[key] = dt
-
     return data
 
 

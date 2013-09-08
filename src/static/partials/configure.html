@@ -1,22 +1,49 @@
-<form ng-submit="update()">
-    <input type="radio" ng-model="forwarders.current" value="sms">SMS
-    <br>
-    <input type="radio" ng-model="forwarders.current" value="dropbox">Dropbox
-    <br>
-    <input type="radio" ng-model="forwarders.current" value="email">E-mail
+<div class="configure page">
+    <form class="configure form form-horizontal" ng-submit="update()">
+        <tabset>
+            <tab class="tab" heading="SMS">
+                <div class="checkbox-wrapper">
+                    <input class="inline checkbox" ng-model="forwarders.forwarders.sms.active" type=checkbox>
+                    <h3 class="inline">SMS Configuration</h3>
+                </div>
+                <div class="row"> 
+                    <div class="col-sm-5 control-label">
+                        <label for="login-phonenumber">Phone number</label>
+                    </div>
+                    <div class="col-sm-7">
+                        <input type="text" id="login-phonenumber" class="form-control" ng-model="forwarders.forwarders.sms.number" placeholder="8005551234">
+                    </div>
+                </div>
+                <input class="form-control submit" type="submit"/>
+            </tab>
+            <tab class="tab" heading="Email">
+                <div class="checkbox-wrapper">
+                    <input class="inline checkbox" ng-model="forwarders.forwarders.email.active" type=checkbox>
+                    <h3 class="inline">Email Configuration</h3>
+                </div>
+                <input class="form-control submit" type="submit"/>
+            </tab>
+            <tab class="tab" heading="Dropbox">
+                <div class="checkbox-wrapper">
+                    <input class="inline checkbox" ng-model="forwarders.forwarders.dropbox.active" type=checkbox>
+                    <h3 class="inline">Dropbox Configuration</h3>
+                    <div class="row">
+                        <div class="col-sm-5 control-label">
+                            <label for="login-phonenumber">Dropbox todo file:</label>
+                        </div>
+                        <div class="col-sm-7">
+                            <div>{{forwarders.forwarders.dropbox.fileUrl}}</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <dropbox-chooser local-model="dropbox" data-link-type="direct"></dropbox-chooser>
+                    </div>
 
-    <div ng-show="showForwarderOptions('sms')">
-        SMS Configuration <br>
-        Phone Number: <input type="text" ng-model="forwarders.forwarders.sms.number"/>
-    </div>
+                </div>
+                <input class="form-control submit" type="submit"/>
+            </tab>
+            
+        </tabset>
 
-    <div ng-show="showForwarderOptions('dropbox')">
-        Dropbox Configuration
-    </div>
-
-    <div ng-show="showForwarderOptions('email')">
-        Email Configuration
-    </div>
-
-    <input ng-show="forwarders.current" type="submit"/>
-</form>
+    </form>
+</div>
