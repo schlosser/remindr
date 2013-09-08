@@ -3,9 +3,14 @@ Flask-PyMongo==0.3.0
 Jinja2==2.7.1
 MarkupSafe==0.18
 Werkzeug==0.9.4
+google-api-python-client==1.2
+httplib2==0.8
 itsdangerous==0.23
 passlib==1.6.1
 pymongo==2.6.2
 requests==1.2.3
 simplejson==3.3.0
+six==1.4.1
+twilio==3.5.4
+unittest2==0.5.1
 wsgiref==0.1.2
