@@ -22,10 +22,10 @@
 						<div class="panel-heading">
 							{{reminder.task}}
 							<div class="right">
-								<button ng-click="archiveRemindr(reminder._id)" class="archive btn btn-default btn-xs"><i class="glyphicon glyphicon-trash"></i></button>
 								<div class="due-date">
-									<strong>Due by:</strong> 
+									<strong>Due by: {{reminder.due | date:'short'}}</strong> 
 								</div>
+								<button ng-click="archiveRemindr(reminder._id);reminder.completed=true" class="archive btn btn-default btn-xs"><i class="glyphicon glyphicon-trash"></i></button>
 							</div>
 						</div>
 						<div class="panel-body">
@@ -40,10 +40,10 @@
 						<div class="panel-heading">
 							{{reminder.task}}
 							<div class="right">
-								<button ng-click="archiveRemindr(reminder._id)" class="archive btn btn-default btn-xs"><i class="glyphicon glyphicon-trash"></i></button>
 								<div class="due-date">
-									<strong>Due by:</strong> 
+									<strong>Due by: {{reminder.due | date:'short'}}</strong> 
 								</div>
+								<button ng-click="archiveRemindr(reminder._id);reminder.completed=true" class="archive btn btn-default btn-xs"><i class="glyphicon glyphicon-trash"></i></button>
 							</div>
 						</div>
 						<div class="panel-body">

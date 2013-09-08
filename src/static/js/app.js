@@ -7,6 +7,7 @@ var app = angular.module('app', [
 	'app.util',
 	'app.flash',
 	'app.signup',
+	'app.share',
 	'app.reminder',
     'app.configure',
     'dropboxChooserModule'
@@ -22,6 +23,7 @@ app.config( ['$routeProvider', function($routeProvider) {
 	.when('/login',		{templateUrl: 'static/partials/login.html'})
 	.when('/signup',	{templateUrl: 'static/partials/signup.html',	controller: 'SignupController'})
     .when('/configure', {templateUrl: 'static/partials/configure.html', controller: 'ConfigureController'})
+    .when('/share', 	{templateUrl: 'static/partials/share.html', 	controller: "ShareController" })
 	.when('/',			{templateUrl: 'static/partials/home.html',		controller: 'HomeController'})
 
 	// default

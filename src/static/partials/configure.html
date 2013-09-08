@@ -11,17 +11,18 @@
                         <label for="login-phonenumber">Phone number</label>
                     </div>
                     <div class="col-sm-7">
-                        <input type="text" id="login-phonenumber" class="form-control" ng-model="forwarders.forwarders.sms.number" placeholder="8005551234">
+                        <input type="text" id="login-phonenumber" class="form-control" ng-model="forwarders.forwarders.sms.number" placeholder="8005551234" ng-disabled="!forwarders.forwarders.sms.active">
                     </div>
                 </div>
-                <input class="form-control submit" type="submit"/>
+                <input ng-disabled="!forwarders.forwarders.sms.active"class="form-control submit" type="submit" value="Save"/>
             </tab>
             <tab class="tab" heading="Email">
                 <div class="checkbox-wrapper">
                     <input class="inline checkbox" ng-model="forwarders.forwarders.email.active" type=checkbox>
                     <h3 class="inline">Email Configuration</h3>
                 </div>
-                <input class="form-control submit" type="submit"/>
+                <p>Email digests will be sent to your email address.</p>
+                <input ng-disabled="!forwarders.forwarders.email.active" class="form-control submit" type="submit" value="Save"/>
             </tab>
             <tab class="tab" heading="Dropbox">
                 <div class="checkbox-wrapper">
@@ -35,17 +36,11 @@
                             <div>{{forwarders.forwarders.dropbox.fileUrl}}</div>
                         </div>
                     </div>
-
-                    <div ng-show="forwarders.forwarders.dropbox.refreshToken">
-                        <a ng-href="/connect/dropbox">Connect to Dropbox</a>
+                    <div class="row">
+                        <dropbox-chooser local-model="dropbox" data-link-type="direct" ng-disabled="!forwarders.forwarders.dropbox.active"></dropbox-chooser>
                     </div>
-
-                    <div ng-show="!forwarders.forwarders.dropbox.refreshToken" class="row">
-                        <dropbox-chooser local-model="dropbox" data-link-type="direct"></dropbox-chooser>
-                    </div>
-
                 </div>
-                <input class="form-control submit" type="submit"/>
+                <input class="form-control submit" type="submit" value="Save" ng-disabled="!forwarders.forwarders.dropbox.active"/>
             </tab>
             
         </tabset>

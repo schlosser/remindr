@@ -7,7 +7,7 @@ angular.module('app.util', [])
 })
 
 
-.controller('Session', function($scope, $cookieStore, $rootScope, $http, flash, $location, $window) {
+.controller('Session', function($scope, $cookieStore, $rootScope, $http, flash, $location, $route, $window) {
 
 	$scope.session = {};
 
@@ -36,7 +36,8 @@ angular.module('app.util', [])
 				$cookieStore.remove('username');
 				$cookieStore.remove('email');
 				$cookieStore.remove('id');
-				$location.url('/loggedout');
+				$window.location.href = '/#/';
+				$route.reload();
 			})
 			.error( function (err) {
 				flash.alertError(err);
@@ -70,6 +71,7 @@ angular.module('app.util', [])
 				flash.notify("signed in");
 				//$location.url('/');
 				$window.location.href = '/#/';
+				$route.reload();
 			})
 			.error( function (err) {
 				console.log(err);
