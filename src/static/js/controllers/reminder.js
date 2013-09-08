@@ -11,8 +11,15 @@ angular.module('app.reminder', [])
 		// initialize stuff
 		$scope.message = {};
 		$scope.message.user = undefined;
-		$scope.message.dueDate = '09-September-2013';
-		$scope.message.dueTime = "12:00";
+
+		$http.get('/reminder/defaults')
+			.success( function (response) {
+				$scope.message.dueDate = response.date_str;
+				$scope.message.dueTime = response.time_str;
+			})
+			.error( function (err) {
+				console.log(err);
+			});
 	};
 
 	$scope.create = function () {
@@ -36,8 +43,14 @@ angular.module('app.reminder', [])
 		getUserList($scope, $http);
 
 		// initialize stuff
-		$scope.message.dueDate = '09-September-2013';
-		$scope.message.dueTime = "12:00";
+		$http.get('/reminder/defaults')
+			.success( function (response) {
+				$scope.message.dueDate = response.date_str;
+				$scope.message.dueTime = response.time_str;
+			})
+			.error( function (err) {
+				console.log(err);
+			});
 	};
 
 	$scope.create = function () {

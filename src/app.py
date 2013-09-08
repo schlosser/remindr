@@ -3,6 +3,7 @@
 from flask.ext.pymongo import PyMongo
 from flask import Flask, make_response, request, session, redirect
 from functools import wraps
+from datetime import datetime, timedelta
 import simplejson
 
 # config
@@ -95,6 +96,7 @@ def list_reminders():
 def update_forwarders():
     return forwarders_controller.update(mongo, data=simplejson.loads(request.data))
 
+
 @login_required
 @app.route('/forwarders', methods=['GET'])
 def get_forwarders():
@@ -139,6 +141,15 @@ def receive_dropbox_token():
 ##############################################################################
 #   main
 ##############################################################################
+
+@app.route('/reminder/defaults', methods=['GET'])
+def get_reminder_defaults():
+    today = datetime.now()
+    return simplejson.dumps({
+        'date_str' : (today + timedelta(days=1)).strftime('%d-%B-%Y'),
+        'time_str' : today.strftime('%H:%M')
+    }), 200
+
 
 # returns json w/ unique identifier
 @app.route('/session')
