@@ -110,7 +110,13 @@ def form_to_dict(data):
     dict['creationDate'] = datetime.now().strftime(MONGO.DATETIME_FORMAT)
     dict['completed'] = False
 
-    for key in ['due', 'task', 'details', 'user', 'priority']:
+    # JANKY AS COULD BE, SORRY NOT SORRY
+    reminder_time = {}
+    reminder_time['dueDate'] = datetime.strptime(data['dueDate'][0:15], '%a %b %d %Y').strftime('%Y-%m-%d')
+    reminder_time['dueTime'] = data['dueTime'].encode('utf-8')
+    dict['due'] = reminder_time['dueDate'] + ' ' + reminder_time['dueTime']
+
+    for key in ['task', 'details', 'user', 'priority']:
         if key in data:
             dict[key] = data[key]
 
@@ -125,7 +131,7 @@ def mongo_to_dict(data):
             dict[key] = str(data[key])
         elif key in ['completed']:
             dict[key] = data[key]
-        elif 'date' in key.lower() or key == 'due':
+        elif 'date' in key.lower():
             dict[key] = data[key].encode('utf-8')
         elif key in ['priority']:
             pass

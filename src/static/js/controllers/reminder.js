@@ -11,7 +11,7 @@ angular.module('app.reminder', [])
 		$scope.message = {
 			user: "Dan",
 			task: "fix your shit",
-			dueDate: "2013-04-01",
+			dueDate: "Sat Sep 07 2013 20:00:00 GMT-0400 (EDT)",
 			dueTime: "14:03",
 			details: "Details, bitch."
 		};
@@ -29,12 +29,16 @@ angular.module('app.reminder', [])
 	$scope.message = {
 		user: "Dan",
 		task: "fix your shit",
-		dueDate: "2013-04-01",
+		dueDate: "Sat Sep 07 2013 20:00:00 GMT-0400 (EDT)",
 		dueTime: "14:03",
 		details: "Details, bitch."
 	};
 
 	$scope.initForm = function () {
+		if (!$scope.session.username) {
+			return;
+		}
+
 		$http.get('/user/'+$routeParams.id)
 			.success( function (response) {
 				$scope.message.user = response.username;
@@ -55,25 +59,25 @@ angular.module('app.reminder', [])
 	$scope.initList = function () {
 		$scope.reminderList = [];
 
-		$http.get('/reminder/list')
-			.success( function (response) {
-				console.log(response);
-				$scope.reminderList = response.reminders;
-			})
-			.error( function (err) {
-				console.log(err);
-			});
+		if ($scope.session && $scope.session.username) {
+			$http.get('/reminder/list')
+				.success( function (response) {
+					console.log(response);
+					$scope.reminderList = response.reminders;
+				})
+				.error( function (err) {
+					console.log(err);
+				});
+		}
 	};
 });
 
 var createReminder = function ($scope, $http, $location, flash) {
 	// format data
 	var data = $scope.message;
-	data['due'] = data['dueDate'] + ' ' + data['dueTime'];
-	delete data['dueDate'];
-	delete data['dueTime'];
+	console.log(data);
 
-	$http.post('/reminder/create', $scope.message)
+	$http.post('/reminder/create', data)
 		.success(function(response){
 			flash.notify(response.message);
 			$location.url('/');
@@ -82,8 +86,5 @@ var createReminder = function ($scope, $http, $location, flash) {
 			if (status === 403) {
 				flash.alertError(err.message);
 			}
-			var datetime = data.due.split(' ');
-			$scope.message.dueDate = datetime[0];
-			$scope.message.dueTime = datetime[1];
 		});
 };
