@@ -2,8 +2,8 @@
 angular.module('app.util', [])
 
 .controller('SearchController', function ($scope, $http, flash, $location) {
-	$scope.selected = undefined;	
-	$scope.userList = []
+	$scope.selected = undefined;
+	$scope.userList = [];
 
 	$scope.initUserList = function () {
 		$http.get('/user/list')
@@ -20,7 +20,7 @@ angular.module('app.util', [])
 
 		for (var index in $scope.userList) {
 			if ($scope.userList[index].username == $scope.selected) {
-				uid = $scope.userList[index]._id
+				uid = $scope.userList[index]._id;
 			}
 		}
 		if (uid) {

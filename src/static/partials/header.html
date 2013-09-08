@@ -35,13 +35,13 @@
 		<ul class="nav navbar-nav navbar-right" ng-show="session.username">
 			<li><a href="#/share">Share</a></li>
 			<li class="dropdown">
-			    <a class="dropdown-toggle">
-			    	Logged in as <strong>{{session.username}} &#x25BC;</strong>
-			  	</a>
-			  	<ul class="dropdown-menu">
-			    	<li><a ng-href="#/configure">Settings</a></li>
-			    	<li><a href ng-click="session.logout()">Sign out</a></li>
-			  	</ul>
+					<a class="dropdown-toggle">
+						Logged in as <strong>{{session.username}} &#x25BC;</strong>
+					</a>
+					<ul class="dropdown-menu">
+						<li><a ng-href="#/configure">Settings</a></li>
+						<li><a href ng-click="session.logout()">Sign out</a></li>
+					</ul>
 			</li>
 			
 		</ul>

@@ -4,8 +4,15 @@ angular.module('app.reminder', [])
 .controller('ReminderStandardCreateController', function ($scope, $http, $location, flash) {
 
 	$scope.initForm = function () {
+		$scope.userList = [];
+		getUserList($scope, $http);		// get list of users
 		$scope.showWeeks = false;
+
+		// initialize stuff
 		$scope.message = {};
+		$scope.message.user = undefined;
+		$scope.message.dueDate = '09-September-2013';
+		$scope.message.dueTime = "12:00";
 	};
 
 	$scope.create = function () {
@@ -17,10 +24,6 @@ angular.module('app.reminder', [])
 	$scope.message = {};
 
 	$scope.initForm = function () {
-		if (!$scope.session.username) {
-			return;
-		}
-
 		$http.get('/user/'+$routeParams.id)
 			.success( function (response) {
 				$scope.message.user = response.username;
@@ -29,6 +32,12 @@ angular.module('app.reminder', [])
 				flash.notifyError(err.message);
 				$location.url('/');
 			});
+		$scope.userList = [];
+		getUserList($scope, $http);
+
+		// initialize stuff
+		$scope.message.dueDate = '09-September-2013';
+		$scope.message.dueTime = "12:00";
 	};
 
 	$scope.create = function () {
@@ -53,6 +62,19 @@ angular.module('app.reminder', [])
 		}
 	};
 });
+
+
+var getUserList = function ($scope, $http) {
+		$http.get('/user/list')
+			.success( function (response) {
+				$scope.userList = response.users;
+				console.log(response);
+			})
+			.error( function(err) {
+				flash.alertError(err.message);
+			});
+};
+
 
 var createReminder = function ($scope, $http, $location, flash) {
 	// format data

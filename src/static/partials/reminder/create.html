@@ -5,25 +5,39 @@
 <div class="composer-wrapper container" ng-init="initForm()">
 	<form class="create-remindr-form" role="form" ng-submit="create()">
 		<div class="row top">
+
+			<!-- name -->
 			<div class="col-sm-6 left">
 				<label class="remindr" for="message-name">remind</label>
-				<input type="text" class="form-control input-lg" id="message-name" placeholder="jappleseed" ng-model="message.user">
+				<input	type="text"
+								class="form-control input-lg"
+								id="message-name"
+								placeholder="jappleseed"
+								ng-model="message.user"
+								typeahead="user.username for user in userList | filter:$viewValue | limitTo:8">
 			</div>
+
+			<!-- task -->
 			<div class="col-sm-6 right">
 				<label class="control-label" for="message-task">to</label>
 				<input type="text" class="form-control input-lg" id="message-task" placeholder="take out the trash" ng-model= "message.task">
 			</div>
+
 		</div>
 		<div class="row bottom">
+
+			<!-- due date -->
 			<div class="col-sm-6 left">
 				<label class="control-label" for="message-date">by</label>
-			    <input type="text" datepicker-popup="dd-MMMM-yyyy" ng-model="message.dueDate" open="opened" min="minDate" max="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" class="form-control input-lg"/>
-			    
+					<input type="text" datepicker-popup="dd-MMMM-yyyy" ng-model="message.dueDate" open="opened" min="minDate" max="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" class="form-control input-lg"/>
 			</div>
+
+			<!-- due time -->
 			<div class="col-sm-6 right">
 				<label class="control-label" for="message-time">at</label>
 				<input type="time" class="form-control input-lg" id="message-time" ng-model="message.dueTime">
 			</div>
+
 		</div>
 		<div class="row">
 			<textarea class="form-control" ng-model="message.details" rows="4" placeholder="Add a note..."></textarea>
