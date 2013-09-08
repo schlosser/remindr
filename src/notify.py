@@ -2,6 +2,7 @@
 import pymongo
 from os import environ as env
 from datetime import datetime
+from flask.ext.pymongo import ObjectId
 
 from config import mongo_config as MONGO
 
@@ -40,6 +41,7 @@ def get_uncompleted_tasks(db):
 
 
 def forward_reminder(mongo, reminder):
+
     user = user_controller.user_info(mongo, data={'username': reminder['user']})
 
     forwarders = mongo.db[MONGO.FORWARDERS].find_one({
@@ -51,8 +53,11 @@ def forward_reminder(mongo, reminder):
 
     if forwarders['current'] == 'sms':
         twilio_forwarder.run(reminder, forwarders)
-    elif forwarders['current'] == 'dropbox':
-        dropbox_forwarder.run(reminder, forwarders)
+    # TODO: finish
+    # elif forwarders['current'] == 'email':
+    #     pass
+    # elif forwarders['current'] == 'dropbox':
+    #     dropbox_forwarder.run(reminder, forwarders)
 
 
 def time_to_notify(reminder):
@@ -63,13 +68,14 @@ def time_to_notify(reminder):
     return False
 
 
+# main method
 def send_reminders():
     db = get_db()
 
     open_reminders = get_uncompleted_tasks(db)
 
     for remind in open_reminders:
-        if time_to_notify(remind) and 'current' in remind:
+        if time_to_notify(remind):
             forward_reminder(db, remind)
 
 
