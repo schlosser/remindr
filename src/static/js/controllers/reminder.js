@@ -4,6 +4,7 @@ angular.module('app.reminder', [])
 .controller('ReminderStandardCreateController', function ($scope, $http, $location, flash) {
 
 	$scope.initForm = function () {
+		$scope.showWeeks = false;
 		$scope.message = {};
 
 		// TODO: delete
