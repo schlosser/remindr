@@ -5,7 +5,7 @@ angular.module('app.flash', [])
 	var queue = [],
 		currentMessage = {},
 		SUCCESS = 'alert alert-success',
-		WARNING = 'alert alert-warning'
+		WARNING = 'alert alert-warning',
 		ERROR = 'alert alert-danger';		// DANGER ZONE http://youtu.be/RRU3I_o1vLc?t=45s
 
 	$rootScope.$on('$routeChangeSuccess', function () {
@@ -46,8 +46,6 @@ angular.module('app.flash', [])
 			};
 		},
 		get: function () {
-			console.log('FLASH');
-			console.log(currentMessage);
 			return currentMessage;
 		}
 	};

@@ -1,6 +1,36 @@
 
 angular.module('app.util', [])
 
+.controller('SearchController', function ($scope, $http, flash, $location) {
+	$scope.selected = undefined;	
+	$scope.userList = []
+
+	$scope.initUserList = function () {
+		$http.get('/user/list')
+			.success( function (response) {
+				$scope.userList = response.users;
+			})
+			.error( function(err) {
+				flash.alertError(err.message);
+			});
+	};
+
+	$scope.openReminder = function () {
+		var uid = null;
+
+		for (var index in $scope.userList) {
+			if ($scope.userList[index].username == $scope.selected) {
+				uid = $scope.userList[index]._id
+			}
+		}
+		if (uid) {
+			$location.url('\/create\/'+uid);
+		} else {
+			$location.url('/');
+		}
+	};
+})
+
 .controller('Flash', function ($scope, flash) {
 	$scope.flash = flash;
 	$scope.dismissed = false;

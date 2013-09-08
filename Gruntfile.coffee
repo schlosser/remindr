@@ -10,7 +10,7 @@ module.exports = (grunt) ->
 
 		concat:
 			js:
-				src:	['src/static/js/**/*.js']
+				src:	['src/static/js/**/*.js', 'src/static/lib/*.js']
 				dest:	'generated/app.js'
 
 		ngmin:

@@ -99,6 +99,18 @@ def signup(mongo, data=None):
     return RESP.LOGGED_IN
 
 
+def get_users(mongo):
+
+    cursor = mongo.db[MONGO.USERS].find()
+
+    users = [mongo_to_dict(item) for item in cursor]
+
+    print users
+    return simplejson.dumps({
+        'users': users
+    }), 200
+
+
 def logout():
     session.clear()
     return RESP.LOGGED_OUT
@@ -107,6 +119,18 @@ def logout():
 ##############################################################################
 #   util methods
 ##############################################################################
+
+def mongo_to_dict(data):
+    dict = {}
+
+    for key in data:
+        if key == '_id':
+            dict[key] = str(data[key])
+        elif key in ['email', 'username']:
+            dict[key] = data[key].encode('utf-8')
+
+    return dict
+
 
 def user_exists(mongo, data=None):
 

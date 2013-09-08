@@ -60,6 +60,11 @@ def logout_required(f):
 def get_user(identifier):
     return user_controller.get_user(mongo, uid=identifier, data={'return': ['username']})
 
+
+@app.route('/user/list', methods=['GET'])
+def user_list():
+    return user_controller.get_users(mongo)
+
     
 ##############################################################################
 #   reminder
