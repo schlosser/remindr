@@ -3,6 +3,7 @@ angular.module('app.util', [])
 
 .controller('Flash', function ($scope, flash) {
 	$scope.flash = flash;
+	$scope.dismissed = false;
 })
 
 
@@ -11,10 +12,11 @@ angular.module('app.util', [])
 	$scope.session = {};
 
 	$http.get('/session')
-		.success(function(response) {
+		.success( function (response) {
 			$cookieStore.put('username',	response.username);
 			$cookieStore.put('email',		response.email);
 			$cookieStore.put('id',			response.id);
+
 			$scope.session.username	= $cookieStore.get('username') || null;
 			$scope.session.email	= $cookieStore.get('email') || null;
 			$scope.session.id		= $cookieStore.get('id') || null;
@@ -25,6 +27,8 @@ angular.module('app.util', [])
 		$scope.session.email	= $cookieStore.get('email') || null;
 		$scope.session.id		= $cookieStore.get('id') || null;
 	});
+
+	//$scope.session.update 
 
 	$scope.session.logout = function () {
 		$http.post('/logout')

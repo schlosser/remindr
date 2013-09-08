@@ -53,6 +53,8 @@ def find_by_current_user(mongo):
 
 def mongo_to_dict(data):
     dict = {}
+    if not data: 
+        return dict
     for key in data:
         if key in ['_id', 'userId']:
             dict[key] = str(data[key])

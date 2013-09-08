@@ -1,29 +1,63 @@
 
 <div class="jumbotron">
-  <div class="container">
-    <h1>
-    	Welcome to <object data="/static/img/remindr.svg?color=#333,scale=0.5" type="image/svg+xml" height="51" width="178">Remindr</object>
-    </h1>
-    <a ng-hide="session.username" ng-href="#/signup" class="btn btn-primary btn-lg" >Sign Up</a>
-    <div class="btn btn-primary btn-lg overlink-container">
+	<div class="container">
+		<h1>
+			Welcome to <object data="/static/img/remindr.svg?color=#333,scale=0.5" type="image/svg+xml" height="51" width="178">Remindr</object>
+		</h1>
+		<a ng-hide="session.username" ng-href="#/signup" class="btn btn-primary btn-lg" >Sign Up</a>
+		<div class="btn btn-primary btn-lg overlink-container">
 		Create a <object data="/static/img/remindr.svg?color=#fff,scale=0.18" type="image/svg+xml" height="18" width="64">Remindr</object>
 		<a ng-href="#/create" class="overlink"></a>
-    </div>
-    <!-- <a ng-href="#/create" class="btn btn-primary btn-lg" ></a> -->
-  </div>
-</div>
-
-<h4>
-	Debugging
-</h4>
-<pre>{{ session | json }}</pre>
-
-<div ng-controller="ReminderListController">
-	<div ng-init="initList()">
-		<ul>
-			<li ng-repeat="reminder in reminderList">
-				<pre>{{ reminder | json }}</pre>
-			</li>
-		</ul>
+		</div>
 	</div>
 </div>
+
+
+<div ng-controller="ReminderListController" class="remindr-list-wrapper">
+	<div ng-init="initList()" ng-show="reminderList.length > 0"> 
+		<div class="remindr-list row">
+			<div class="column col-sm-6">
+				<div ng-repeat="reminder in reminderList" >
+					<div ng-show="!reminder.completed" ng-class-even="'hide'" class="remindr-panel panel panel-default">
+						<div class="panel-heading">
+							{{reminder.task}}
+							<div class="right">
+								<button ng-click="archiveRemindr(reminder._id)" class="archive btn btn-default btn-xs"><i class="glyphicon glyphicon-trash"></i></button>
+								<div class="due-date">
+									<strong>Due by:</strong> 
+								</div>
+							</div>
+						</div>
+						<div class="panel-body">
+							{{reminder.details}}
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="column col-sm-6">
+				<div ng-repeat="reminder in reminderList" >
+					<div ng-show="!reminder.completed" ng-class-odd="'hide'" class="remindr-panel panel panel-default">
+						<div class="panel-heading">
+							{{reminder.task}}
+							<div class="right">
+								<button ng-click="archiveRemindr(reminder._id)" class="archive btn btn-default btn-xs"><i class="glyphicon glyphicon-trash"></i></button>
+								<div class="due-date">
+									<strong>Due by:</strong> 
+								</div>
+							</div>
+						</div>
+						<div class="panel-body">
+							{{reminder.details}}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!--h4>
+	Debugging
+</h4>
+<pre>{{ session | json }}</pre-->

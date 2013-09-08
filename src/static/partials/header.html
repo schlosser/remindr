@@ -28,7 +28,16 @@
 			<li><a href="#/signup">Sign up</a></li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right" ng-show="session.username">
-			<li><a href ng-click="session.logout()">Sign out</a></li>
+			<li class="dropdown">
+			    <a class="dropdown-toggle">
+			    	Logged in as <strong>{{session.username}}</strong>
+			  	</a>
+			  	<ul class="dropdown-menu">
+			    	<li><a ng-href="#/configure">Settings</a></li>
+			    	<li><a href ng-click="session.logout()">Sign out</a></li>
+			  	</ul>
+			</li>
+			
 		</ul>
 	</div><!-- /.navbar-collapse -->
 

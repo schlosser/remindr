@@ -30,4 +30,5 @@ angular.module('app.configure', [])
     $scope.showForwarderOptions = function(name) {
         return $scope.forwarders.current == name;
     }
+    
 });
