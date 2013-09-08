@@ -8,7 +8,8 @@ var app = angular.module('app', [
 	'app.flash',
 	'app.signup',
 	'app.reminder',
-    'app.configure'
+    'app.configure',
+    'dropboxChooserModule'
 ]);
 
 app.config( ['$routeProvider', function($routeProvider) {

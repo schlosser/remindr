@@ -37,7 +37,8 @@ def update(mongo, data=None):
         {
             '$set' : {
                 'current' : data['current'],
-                'forwarders.sms.number' : data['forwarders']['sms']['number']
+                'forwarders.sms.number' : data['forwarders']['sms']['number'],
+                'forwarders.dropbox' : data['forwarders']['dropbox']
             }
         })
 

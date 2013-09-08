@@ -11,7 +11,11 @@
     </div>
 
     <div ng-show="showForwarderOptions('dropbox')">
-        Dropbox Configuration
+        Choose your dropbox todo file:
+
+        <div>{{forwarders.forwarders.dropbox.fileUrl}}</div>
+
+        <dropbox-chooser local-model="dropbox" data-link-type="direct"></dropbox-chooser>
     </div>
 
     <div ng-show="showForwarderOptions('email')">

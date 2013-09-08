@@ -3,6 +3,7 @@ Flask-PyMongo==0.3.0
 Jinja2==2.7.1
 MarkupSafe==0.18
 Werkzeug==0.9.4
+dropbox==1.6
 google-api-python-client==1.2
 httplib2==0.8
 itsdangerous==0.23
