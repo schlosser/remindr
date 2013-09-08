@@ -13,8 +13,9 @@
 <body ng-controller="Session">
 	<div ng-include="'static/partials/header.html'"></div>
 	
-	<div class="container" ng-controller="Flash">
-		<div class="alert" ng-show="flash.get().length">
+	<div ng-show="!dismissed" class="flashes" ng-controller="Flash">
+		<div class="alert alert-danger" ng-show="flash.get().length">
+			<button ng-click="dismissed=true" type="button" class="close" aria-hidden="true">&times;</button>
 			{{ flash.get() }}
 		</div>
 	</div> <!-- end flash messages -->

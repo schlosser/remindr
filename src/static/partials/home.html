@@ -13,17 +13,52 @@
   </div>
 </div>
 
-<h4>
-	Debugging
-</h4>
-<pre>{{ session | json }}</pre>
 
-<div ng-controller="ReminderListController">
-	<div ng-init="initList()">
-		<ul>
-			<li ng-repeat="reminder in reminderList">
-				<pre>{{ reminder | json }}</pre>
-			</li>
-		</ul>
+<div ng-controller="ReminderListController" class="remindr-list-wrapper">
+	<div ng-init="initList()" ng-show="reminderList.length > 0"> 
+		<div class="remindr-list row">
+			<div class="column col-sm-6">
+				<div ng-repeat="reminder in reminderList" >
+					<div ng-show="!reminder.completed" ng-class-even="'hide'" class="remindr-panel panel panel-default">
+						<div class="panel-heading">
+							{{reminder.task}}
+							<div class="right">
+								<button ng-click="archiveRemindr(reminder._id)" class="archive">AR</button>
+								<div class="due-date">
+									<strong>Due by:</strong> 
+								</div>
+							</div>
+						</div>
+						<div class="panel-body">
+							{{reminder.details}}
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="column col-sm-6">
+				<div ng-repeat="reminder in reminderList" >
+					<div ng-show="!reminder.completed" ng-class-odd="'hide'" class="remindr-panel panel panel-default">
+						<div class="panel-heading">
+							{{reminder.task}}
+							<div class="right">
+								<button ng-click="archiveRemindr(reminder._id)" class="archive">AR</button>
+								<div class="due-date">
+									<strong>Due by:</strong> 
+								</div>
+							</div>
+						</div>
+						<div class="panel-body">
+							{{reminder.details}}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
+
+
+<!--h4>
+	Debugging
+</h4>
+<pre>{{ session | json }}</pre-->

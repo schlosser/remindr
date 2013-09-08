@@ -52,6 +52,7 @@ def edit(mongo, data=None):
 
 @needs_data
 def complete(mongo, data=None):
+    print data
     response = mongo.db[MONGO.REMINDERS].update(
         {'_id' : ObjectId(data['rid'])},
         {'$set': {
@@ -71,6 +72,7 @@ def list(mongo):
     reminders = [mongo_to_dict(item) for item in cursor]
     reminders = [time_to_epoch(item) for item in reminders]
 
+
     if len(reminders) == 0:
         return ERR.NO_REMINDERS_FOUND
 
@@ -89,7 +91,7 @@ def time_to_epoch(data):
         if key in ['creationDate', 'due']:
             delta = datetime.strptime(data[key], MONGO.DATETIME_FORMAT) - epoch
             data[key] = delta.total_seconds()
-
+            
     return data
 
 

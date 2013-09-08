@@ -1,10 +1,13 @@
-$lightBlue: #66ACFF;
+$blue: #66ACFF;
 $darkBlue: #356FB2;
+$green: #46a546;
+$darkGreen: #297F29;
+
 
 body, html {
 	padding-top: 0;
 	height: 100%;
-	background-color: $lightBlue;
+	background-color: $blue;
 }
 
 .ng-view {
@@ -51,7 +54,7 @@ body, html {
 }
 
 .page {
-	background-color: $lightBlue;
+	background-color: $blue;
 	width: 100%;
 	height: 100%;
 	position: relative;
@@ -83,7 +86,8 @@ body, html {
 
 		.submit {
 			margin-top: 10px;
-			background-color: $darkBlue;
+			border: none;
+			background-color: $darkGreen;
 			color:white;
 			min-width: 80px;
 		}
@@ -94,8 +98,15 @@ body, html {
 	}
 }
 
-.jumbotron .btn {
-	display: inline-block;
+.jumbotron {
+	.btn {
+		background-color: $green;
+		border: none;
+		display: inline-block;
+	}
+	.reminder.image {
+		
+	}
 }
 
 .logo {
@@ -106,6 +117,45 @@ body, html {
 	font-size: 6em;
 }
 
+.flashes {
+	position: fixed;
+	top: 80px;
+	right: 5px;
+	left: 5px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	max-width: 300px;
+	height: 50px;
+}
+
+.remindr-list-wrapper {
+	padding-bottom: 10px;
+	.remindr-list {
+		width: 95%;
+		max-width: 1000px;
+		margin-bottom: 20px;
+		border-radius: 0 0 5px 5px;
+		background-color: #eee;
+		margin-left: auto;
+		margin-right: auto;
+		padding: 10px 0 ;
+		.remindr-panel {
+			.right {
+				margin-top:-3px;
+				float:right;
+				div, button {
+					display: inline-block;
+				}
+			}
+		}
+	}
+
+}
+
+.hide {
+	display:none;
+}
 .navbar-brand {
 	font-size: 2em;
 	width: 71px;

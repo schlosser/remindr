@@ -63,7 +63,7 @@ def create_reminder():
 
 @app.route('/reminder/complete/<rid>', methods=['POST'])
 def complete_reminder(rid):
-    return reminder_controller.complete(mongo, data={"id": rid})
+    return reminder_controller.complete(mongo, data={"rid": rid})
 
 
 @login_required
