@@ -13,6 +13,8 @@ path.append('../')
 from config import responses as RESP
 from config import errors as ERR
 from config import mongo_config as MONGO
+from external_task_creators import twilio_forwarder
+from external_task_creators import dropbox_forwarder
 
 
 ##############################################################################
@@ -38,8 +40,29 @@ def create(mongo, data=None):
     if not user_controller.user_exists(mongo, {'username': data['user']}):
         return ERR.USER_NOT_FOUND
 
-    mongo.db[MONGO.REMINDERS].insert(data)
+    reminderId = mongo.db[MONGO.REMINDERS].insert(data)
+
+    reminder = mongo.db[MONGO.REMINDERS].find_one({
+        '_id' : ObjectId(reminderId)
+    })
+
+    forward(mongo, reminder)
+
     return RESP.REMINDER_CREATED
+
+def forward(mongo, reminder):
+    user = user_controller.user_info(mongo, data={'username': reminder['user']})
+
+    forwarders = mongo.db[MONGO.FORWARDERS].find_one({
+        'userId': user['_id']
+    })
+
+    if forwarders['current'] == 'sms':
+        twilio_forwarder.run(reminder, forwarders)
+    elif forwarders['current'] == 'dropbox':
+        dropbox_forwarder.run(reminder, forwarders)
+    pass
+
 
 
 @needs_data

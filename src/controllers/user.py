@@ -76,6 +76,16 @@ def signup(mongo, data=None):
 
     user = mongo.db[MONGO.USERS].find_one({'_id': ObjectId(userId)})
 
+    mongo.db[MONGO.FORWARDERS].insert({
+        'current' : 'sms',
+        'forwarders' : {
+            'sms' : {
+                'number' : ''
+            },
+        },
+        'userId' : userId
+    })
+
     addUserToSession(user)
     return RESP.LOGGED_IN
 
@@ -100,6 +110,18 @@ def user_exists(mongo, data=None):
                 return True
 
     return False
+
+def user_info(mongo, data=None):
+
+    for identifier, method in [('_id', ObjectId), ('username', str), ('email', str)]:
+        if identifier in data.keys():
+            user = mongo.db[MONGO.USERS].find_one({
+                identifier : method(data[identifier])
+            })
+            if user:
+                return user
+
+    return None
 
 
 def addUserToSession(user):

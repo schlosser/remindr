@@ -3,6 +3,7 @@
 
 USERS = 'USERS'
 REMINDERS = 'REMINDERS'
+FORWARDERS = 'FORWARDERS'
 
 # constants
 
