@@ -1,9 +1,15 @@
 
 <div class="jumbotron">
   <div class="container">
-    <h1>Welcome to <span class="remindr image large _333333" style="vertical-align: 5px">Remindr</span></h1>
+    <h1>
+    	Welcome to <object data="/static/img/remindr.svg?color=#333,scale=0.5" type="image/svg+xml" height="51" width="178">Remindr</object>
+    </h1>
     <a ng-hide="session.username" ng-href="#/signup" class="btn btn-primary btn-lg" >Sign Up</a>
-    <a ng-href="#/create" class="btn btn-primary btn-lg" >Create a <span class="remindr image small _ffffff" style="vertical-align: 1px">remindr</span></a>
+    <div class="btn btn-primary btn-lg overlink-container">
+		Create a <object data="/static/img/remindr.svg?color=#fff,scale=0.18" type="image/svg+xml" height="18" width="64">Remindr</object>
+		<a ng-href="#/create" class="overlink"></a>
+    </div>
+    <!-- <a ng-href="#/create" class="btn btn-primary btn-lg" ></a> -->
   </div>
 </div>
 
