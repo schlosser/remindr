@@ -120,13 +120,14 @@ def user_exists(mongo, data=None):
 
     return False
 
-def user_info(mongo, data=None):
 
+def user_info(mongo, data=None):
     for identifier, method in [('_id', ObjectId), ('username', str), ('email', str)]:
         if identifier in data.keys():
-            user = mongo.db[MONGO.USERS].find_one({
+            user = mongo[MONGO.USERS].find_one({
                 identifier : method(data[identifier])
             })
+            print {identifier : method(data[identifier])}
             if user:
                 return user
 

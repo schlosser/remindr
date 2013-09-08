@@ -15,9 +15,9 @@
 	<div ng-include="'static/partials/header.html'"></div>
 	
 	<div ng-show="!dismissed" class="flashes" ng-controller="Flash">
-		<div class="alert alert-danger" ng-show="flash.get().length">
+		<div ng-show="flash.get().message.length" ng-class='flash.get().style'>
 			<button ng-click="dismissed=true" type="button" class="close" aria-hidden="true">&times;</button>
-			{{ flash.get() }}
+			{{ flash.get().message }}
 		</div>
 	</div> <!-- end flash messages -->
 
