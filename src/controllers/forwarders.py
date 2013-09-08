@@ -43,10 +43,18 @@ def update(mongo, data=None):
 
     return RESP.UPDATED
 
-@needs_data
-def find_by_current_user(mongo, data=None):
+def find_by_current_user(mongo):
     forwarders = mongo.db[MONGO.FORWARDERS].find_one({
         'userId' : ObjectId(session['uid'])
     })
 
-    return simplejson.dumps(forwarders)
+    return simplejson.dumps(mongo_to_dict(forwarders)), 200
+
+def mongo_to_dict(data):
+    dict = {}
+    for key in data:
+        if key in ['_id', 'userId']:
+            dict[key] = str(data[key])
+        else:
+            dict[key] = data[key]
+    return dict

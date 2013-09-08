@@ -3,15 +3,13 @@ angular.module('app.configure', [])
 .controller('ConfigureController', function($scope, $http, $location, flash) {
     $scope.forwarders = {};
 
-    $scope.initForm = function(){
-        $http.get('/forwarders')
-            .success( function(resp) {
-                $scope.forwarders = resp;
-            })
-            .error( function (err) {
-                flash.alertError(err.message);
-            })
-    };
+    $http.get('/forwarders')
+        .success( function(resp) {
+            $scope.forwarders = resp;
+        })
+        .error( function (err) {
+            flash.alertError(err.message);
+        });
 
     $scope.update = function() {
         console.log($scope.forwarders);
