@@ -11,22 +11,27 @@ body, html {
 	height: 90%;
 }
 
-.create-reminder-form {
+.create-remindr-form {
 	.row {
 		margin-bottom: 10px;
 	}
 	input, label {
+		margin-top:0;
+		margin-bottom: 0;
+		vertical-align: baseline;
 		display: inline;
+	}
+	label {
+		font-size: 2em;
 	}
 	.top {
 		input {
-			max-width: 250px;
+			width: 250px;
 		}
 	}
 	.bottom {
 		input {
-			width: auto;
-			height: 2.5em;
+			width: 180px;
 		}
 	}
 	.right {
@@ -72,11 +77,6 @@ body, html {
 		padding: 20px;
 		border-radius: 5px;
 
-		h3 {
-			margin-top: 0;
-			text-align: center;
-		}
-
 		.row {
 			margin-bottom: 10px;
 		}
@@ -88,6 +88,14 @@ body, html {
 			min-width: 80px;
 		}
 	}
+
+	h3 {
+		margin-top: 0;
+	}
+}
+
+.jumbotron .btn {
+	display: inline-block;
 }
 
 .logo {
@@ -176,6 +184,12 @@ body, html {
 	}
 }
 
+.left li {
+	&.divider, span.btn-group, button.btn-success {
+		display: none;
+	}
+}
+
 @media screen and (max-width: 767px) {
 	.page form.form {
 		&.login {
@@ -187,4 +201,21 @@ body, html {
 			max-height: 430px;
 		}
 	}	
+	.create-remindr-form {
+		label {
+			width: 100px !important;
+		}
+		.left {
+			text-align: left; 
+		}
+	}
+}
+@media screen and (max-width: 480px) {
+	.create-remindr-form {
+		.left, .right {
+			width: 100%;
+			float: left;
+			text-align: center;
+		}
+	}
 }

@@ -1,23 +1,24 @@
 
 <h1 class="logo remindr">Remindr</h1>
 <div class="composer-wrapper container" ng-init="initForm()">
-	<form class="create-reminder-form" role="form" ng-submit="create()">
+	<form class="create-remindr-form" role="form" ng-submit="create()">
 		<div class="row top">
-			<div class="col-md-6 left">
-				<label class="control-label" for="message-name">Remind2</label>
+			<div class="col-sm-6 left">
+				<label class="remindr" for="message-name">remind</label>
 				<input type="text" class="form-control input-lg" id="message-name" placeholder="jappleseed" ng-model="message.user">
 			</div>
-			<div class="col-md-6 right">
+			<div class="col-sm-6 right">
 				<label class="control-label" for="message-task">to</label>
 				<input type="text" class="form-control input-lg" id="message-task" placeholder="take out the trash" ng-model= "message.task">
 			</div>
 		</div>
 		<div class="row bottom">
-			<div class="col-md-6 left">
+			<div class="col-sm-6 left">
 				<label class="control-label" for="message-date">by</label>
-				<input type="date" class="form-control input-lg" id="message-date" ng-model= "message.dueDate">
+			    <input type="text" datepicker-popup="dd-MMMM-yyyy" ng-model="message.dueDate" open="opened" min="minDate" max="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" class="form-control input-lg"/>
+			    
 			</div>
-			<div class="col-md-6 right">
+			<div class="col-sm-6 right">
 				<label class="control-label" for="message-time">at</label>
 				<input type="time" class="form-control input-lg" id="message-time" ng-model="message.dueTime">
 			</div>
