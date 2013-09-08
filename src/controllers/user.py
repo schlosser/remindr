@@ -64,7 +64,8 @@ def login(mongo, data=None):
 
 @needs_data
 def signup(mongo, data=None):
-    if not user_exists(mongo, data={'email' : data['email']}):
+    print data
+    if user_exists(mongo, data={'email' : data['email']}):
         return ERR.USER_ALREADY_EXISTS
 
     userId = mongo.db[MONGO.USERS].insert({
