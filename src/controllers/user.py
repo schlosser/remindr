@@ -112,6 +112,18 @@ def user_exists(mongo, data=None):
 
     return False
 
+def user_info(mongo, data=None):
+
+    for identifier, method in [('_id', ObjectId), ('username', str), ('email', str)]:
+        if identifier in data.keys():
+            user = mongo.db[MONGO.USERS].find_one({
+                identifier : method(data[identifier])
+            })
+            if user:
+                return user
+
+    return None
+
 
 def addUserToSession(user):
     session['username'] = user['username']

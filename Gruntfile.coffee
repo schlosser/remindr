@@ -58,3 +58,4 @@ module.exports = (grunt) ->
 	grunt.registerTask 'style', ['sass']
 	grunt.registerTask 'default', ['build', 'clean']
 	grunt.registerTask 'build', ['concat', 'ngmin', 'uglify', 'sass']
+	grunt.registerTask 'noSass', ['concat', 'ngmin', 'uglify']
