@@ -35,7 +35,12 @@
                             <div>{{forwarders.forwarders.dropbox.fileUrl}}</div>
                         </div>
                     </div>
-                    <div class="row">
+
+                    <div ng-show="forwarders.forwarders.dropbox.refreshToken">
+                        <a ng-href="/connect/dropbox">Connect to Dropbox</a>
+                    </div>
+
+                    <div ng-show="!forwarders.forwarders.dropbox.refreshToken" class="row">
                         <dropbox-chooser local-model="dropbox" data-link-type="direct"></dropbox-chooser>
                     </div>
 

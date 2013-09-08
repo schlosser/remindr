@@ -15,7 +15,7 @@ angular.module('app.configure', [])
 
     $scope.update = function() {
         if ($scope.dropbox.files) {
-            $scope.forwarders.forwarders.dropbox.fileUrl = $scope.dropbox.files[0][0]['link'];
+            $scope.forwarders.forwarders.dropbox.fileUrl = $scope.dropbox.files[0][0]['link']
             $scope.forwarders.forwarders.dropbox.fileSize = $scope.dropbox.files[0][0]['bytes'];
         }
         console.log($scope.forwarders);

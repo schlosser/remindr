@@ -1,7 +1,7 @@
 
 # libraries
 from flask.ext.pymongo import PyMongo
-from flask import Flask, make_response, request, session
+from flask import Flask, make_response, request, session, redirect
 from functools import wraps
 import simplejson
 
@@ -13,6 +13,15 @@ from config import errors       as ERR
 from controllers import user as user_controller
 from controllers import reminder as reminder_controller
 from controllers import forwarders as forwarders_controller
+from controllers import oauth as oauth_controller
+
+# dropbox oauth
+import dropbox
+from os import environ
+DROPBOX_API_KEY = environ['DROPBOX_API_KEY']
+DROPBOX_SECRET = environ['DROPBOX_SECRET']
+flow = dropbox.client.DropboxOAuth2FlowNoRedirect(DROPBOX_API_KEY, DROPBOX_SECRET)
+
 
 app = Flask(__name__)
 app.config.from_object('config.flask_config')
@@ -104,6 +113,22 @@ def signup():
 @login_required
 def logout():
     return user_controller.logout()
+
+##############################################################################
+#   OAuth
+##############################################################################
+
+@app.route('/connect/dropbox')
+@login_required
+def connect_to_dropbox():
+    authorize_url = flow.start() + '&redirect_uri=http://localhost:5000/#/configure'
+    return redirect(authorize_url)
+
+
+def receive_dropbox_token():
+    code = request.args.get('code')
+    access_token, user_id = flow.finish(code)
+    oauth_controller.save_dropbox(mongo, access_token)
 
 
 ##############################################################################
