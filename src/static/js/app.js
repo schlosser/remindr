@@ -1,6 +1,7 @@
 
 var app = angular.module('app', [
 	'ngCookies',
+	'ui.bootstrap',
 	'app.header',
 	'app.home',
 	'app.util',
