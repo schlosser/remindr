@@ -22,3 +22,6 @@ src/config/deploy_config.sh
 # angular
 !src/static/lib
 
+# cron
+log.txt
+
