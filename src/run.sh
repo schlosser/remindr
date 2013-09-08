@@ -1,7 +1,7 @@
 #!/bin/bash
 
 cd ..
-grunt noSass
+grunt
 source bin/activate
 source src/config/test_config.sh
 python src/app.py
