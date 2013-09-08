@@ -1,9 +1,8 @@
 
 angular.module('app.home', [])
 
-.controller('HomeController', function ($scope, $http, flash) {
+.controller('HomeController', function ($scope, $http, $route, flash) {
 	$scope.archiveRemindr = function (_id) {
-		console.log(_id);
 		$http.post('/reminder/complete/'+_id)
 			.success( function(resp) {
 				flash.notify(resp.message);
@@ -11,5 +10,6 @@ angular.module('app.home', [])
 			.error( function(err) {
 				flash.alertError(err.message);
 			});
+		$route.reload();
 	};
 });

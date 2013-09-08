@@ -6,14 +6,6 @@ angular.module('app.reminder', [])
 	$scope.initForm = function () {
 		$scope.showWeeks = false;
 		$scope.message = {};
-
-		// TODO: delete
-		$scope.message = {
-			user: "Dan",
-			task: "fix your shit",
-			dueTime: "14:03",
-			details: "Details, bitch."
-		};
 	};
 
 	$scope.create = function () {
@@ -23,14 +15,6 @@ angular.module('app.reminder', [])
 
 .controller('ReminderKnownCreateController', function ($scope, $http, $routeParams, $location, flash) {
 	$scope.message = {};
-
-	// TODO: delete
-	$scope.message = {
-		user: "Dan",
-		task: "fix your shit",
-		dueTime: "14:03",
-		details: "Details, bitch."
-	};
 
 	$scope.initForm = function () {
 		if (!$scope.session.username) {

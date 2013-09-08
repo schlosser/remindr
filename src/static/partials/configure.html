@@ -14,7 +14,7 @@
                         <input type="text" id="login-phonenumber" class="form-control" ng-model="forwarders.forwarders.sms.number" placeholder="8005551234" ng-disabled="!forwarders.forwarders.sms.active">
                     </div>
                 </div>
-                <input ng-disabled="!forwarders.forwarders.sms.active"class="form-control submit" type="submit" value="Save"/>
+                <input class="form-control submit" type="submit" value="Save"/>
             </tab>
             <tab class="tab" heading="Email">
                 <div class="checkbox-wrapper">
@@ -22,7 +22,7 @@
                     <h3 class="inline">Email Configuration</h3>
                 </div>
                 <p>Email digests will be sent to your email address.</p>
-                <input ng-disabled="!forwarders.forwarders.email.active" class="form-control submit" type="submit" value="Save"/>
+                <input class="form-control submit" type="submit" value="Save"/>
             </tab>
             <tab class="tab" heading="Dropbox">
                 <div class="checkbox-wrapper">
@@ -40,7 +40,7 @@
                         <dropbox-chooser local-model="dropbox" data-link-type="direct" ng-disabled="!forwarders.forwarders.dropbox.active"></dropbox-chooser>
                     </div>
                 </div>
-                <input class="form-control submit" type="submit" value="Save" ng-disabled="!forwarders.forwarders.dropbox.active"/>
+                <input class="form-control submit" type="submit" value="Save" \\/>
             </tab>
             
         </tabset>
