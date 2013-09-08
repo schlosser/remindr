@@ -11,7 +11,6 @@ angular.module('app.reminder', [])
 		$scope.message = {
 			user: "Dan",
 			task: "fix your shit",
-			dueDate: "Sat Sep 07 2013 20:00:00 GMT-0400 (EDT)",
 			dueTime: "14:03",
 			details: "Details, bitch."
 		};
@@ -29,7 +28,6 @@ angular.module('app.reminder', [])
 	$scope.message = {
 		user: "Dan",
 		task: "fix your shit",
-		dueDate: "Sat Sep 07 2013 20:00:00 GMT-0400 (EDT)",
 		dueTime: "14:03",
 		details: "Details, bitch."
 	};

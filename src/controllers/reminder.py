@@ -112,7 +112,7 @@ def form_to_dict(data):
 
     # JANKY AS COULD BE, SORRY NOT SORRY
     reminder_time = {}
-    reminder_time['dueDate'] = datetime.strptime(data['dueDate'][0:15], '%a %b %d %Y').strftime('%Y-%m-%d')
+    reminder_time['dueDate'] = data['dueDate'][0:10]
     reminder_time['dueTime'] = data['dueTime'].encode('utf-8')
     dict['due'] = reminder_time['dueDate'] + ' ' + reminder_time['dueTime']
 
