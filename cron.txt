@@ -1,0 +1,5 @@
+
+# cron job to install
+
+*/15 * * * * path/to/remindr/notify.sh
+

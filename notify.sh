@@ -1,9 +1,10 @@
 #!/bin/bash
 
-cd ..
-grunt
+cd github/remindr
+
 source bin/activate
-#source src/config/test_config.sh
 source src/config/deploy_config.sh
-python src/app.py
+python src/notify.py
+
+date >> log.txt
 

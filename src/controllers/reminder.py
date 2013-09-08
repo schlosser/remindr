@@ -1,5 +1,4 @@
 
-
 from flask import session
 from flask.ext.pymongo import ObjectId
 from functools import wraps
@@ -40,29 +39,9 @@ def create(mongo, data=None):
     if not user_controller.user_exists(mongo, {'username': data['user']}):
         return ERR.USER_NOT_FOUND
 
-    reminderId = mongo.db[MONGO.REMINDERS].insert(data)
-
-    reminder = mongo.db[MONGO.REMINDERS].find_one({
-        '_id' : ObjectId(reminderId)
-    })
-
-    forward(mongo, reminder)
+    mongo.db[MONGO.REMINDERS].insert(data)
 
     return RESP.REMINDER_CREATED
-
-def forward(mongo, reminder):
-    user = user_controller.user_info(mongo, data={'username': reminder['user']})
-
-    forwarders = mongo.db[MONGO.FORWARDERS].find_one({
-        'userId': user['_id']
-    })
-
-    if forwarders['current'] == 'sms':
-        twilio_forwarder.run(reminder, forwarders)
-    elif forwarders['current'] == 'dropbox':
-        dropbox_forwarder.run(reminder, forwarders)
-    pass
-
 
 
 @needs_data
@@ -110,6 +89,16 @@ def time_to_epoch(data):
         if key in ['creationDate', 'due']:
             delta = datetime.strptime(data[key], MONGO.DATETIME_FORMAT) - epoch
             data[key] = delta.total_seconds()
+
+    return data
+
+
+def time_to_datetime(data):
+
+    for key in data:
+        if key in ['creationDate', 'due']:
+            dt = datetime.strptime(data[key], MONGO.DATETIME_FORMAT)
+            data[key] = dt
 
     return data
 

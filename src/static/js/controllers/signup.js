@@ -1,7 +1,7 @@
 
 angular.module('app.signup', [])
 
-.controller('SignupController', function($scope, $http, $location, flash) {
+.controller('SignupController', function($scope, $http, $window, flash) {
 	$scope.user = {};
 
 	$scope.signup = function () {
@@ -14,7 +14,7 @@ angular.module('app.signup', [])
 		$http.post('/signup', $scope.user)
 			.success( function (resp) {
 				flash.notify(resp.message);
-				$location.url('/');
+				$window.location.href = "/#/";
 			})
 			.error( function (err) {
 				flash.alertError(err.message);
